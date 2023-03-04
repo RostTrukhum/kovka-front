@@ -1,0 +1,109 @@
+import axios from 'axios';
+import { BACKEND_URL, UPLOAD_PHOTO_BACKEND } from '../../constants';
+import {
+  ICreateProductVariables,
+  IDeleteProductVariables,
+  IGetProductsResponce,
+  IGetProductsVariables,
+  IProductSubtype,
+  IProductType,
+  IUpdateProductVariables,
+  UploadProductImage,
+} from './types';
+
+export const getProducts = async ({ filter }: IGetProductsVariables) => {
+  try {
+    const products = await axios.get<IGetProductsVariables, IGetProductsResponce>(
+      `${BACKEND_URL}/getProducts`,
+      {
+        params: filter,
+      },
+    );
+
+    return products.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getProductTypes = async () => {
+  try {
+    const productTypes = await axios.get<IProductType[]>(`${BACKEND_URL}/getProductTypes`);
+
+    return productTypes.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getProductSubtypes = async () => {
+  try {
+    const productSubtypes = await axios.get<IProductSubtype[]>(`${BACKEND_URL}/getProductSubtypes`);
+
+    return productSubtypes.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const updateProduct = async ({
+  title,
+  price,
+  img,
+  id,
+  type,
+  subtype,
+}: IUpdateProductVariables) => {
+  try {
+    await axios.post<IUpdateProductVariables>(`${BACKEND_URL}/updateProduct`, {
+      title,
+      price,
+      img,
+      id,
+      type,
+      subtype,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const uploadProductImage = async ({ image }: UploadProductImage) => {
+  try {
+    const uploadedPhoto = await axios.post(UPLOAD_PHOTO_BACKEND, image);
+
+    return uploadedPhoto?.data?.data?.image?.url;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const createProduct = async ({
+  img,
+  title,
+  price,
+  type,
+  subtype,
+}: ICreateProductVariables) => {
+  try {
+    await axios.post(`${BACKEND_URL}/createProduct`, {
+      img,
+      title,
+      price,
+      type,
+      subtype,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteProduct = async ({ id }: IDeleteProductVariables) => {
+  try {
+    await axios.post(`${BACKEND_URL}/deleteProduct`, {
+      id,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};

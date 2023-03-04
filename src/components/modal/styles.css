@@ -1,0 +1,18 @@
+.modal-wrapper {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	width: 100vw;
+	height: 150vh;
+	background-color: rgba(108, 122, 137, 0.5);
+	z-index: 3;
+	top: 0;
+	left: 0;
+}
+
+.modal-content-wrapper {
+	margin-top: 20px;
+	opacity: 1;
+	width: fit-content;
+	height: fit-content
+}

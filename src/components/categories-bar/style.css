@@ -1,0 +1,81 @@
+.categories-bar-wrapper {
+	display: flex;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	background: #FFFFFF;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0px 1px 0px #E1E3E6;
+}
+
+.categories-bar-sub-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 85%;
+}
+
+.categories-bar-content {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.categories-button {
+	display: flex;
+	align-items: center;
+	height: 47px;
+	gap: 16px;
+	background: #FFFFFF;
+	border: 1px solid #E1E3E6;
+	border-radius: 6px;
+	cursor: pointer;
+	min-width: 175px;
+	font-family: 'Inter';
+	font-weight: 500;
+	font-size: 14px;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (max-width: 440px) {
+	.categories-button {
+		font-size: 0;
+		min-width: 0;
+		gap: 0;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+.category-button {
+	font-family: 'Inter';
+	font-weight: 500;
+	font-size: 14px;
+	color: #636270;
+	cursor: pointer;
+}
+
+@media (max-width: 775px) {
+	.category-button {
+		display: none;
+	}
+}
+
+.category-button-active {
+	color: #007580;
+}
+
+.category-contact {
+	font-family: 'Inter';
+	font-weight: 400;
+	font-size: 14px;
+	color: #636270;
+}
+
+.category-phone {
+	color: #272343;
+	font-weight: 500;
+	font-size: 14px;
+	font-family: 'Inter';
+}

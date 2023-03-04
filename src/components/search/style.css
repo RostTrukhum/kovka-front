@@ -1,0 +1,29 @@
+.search-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #FFFFFF;
+	padding: 13px 16px 13px 16px;
+	width: 30%;
+	min-width: 250px;
+	border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+	.search-wrapper {
+		width: 100%;
+		margin-right: 10px;
+		min-width: 0px;
+	}
+}
+
+.search-input {
+	border: 0px;
+	font-family: 'Inter';
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.search-icon {
+	cursor: pointer;
+}

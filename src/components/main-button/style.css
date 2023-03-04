@@ -1,0 +1,17 @@
+.main-button-wrapper {
+	display: flex;
+	align-items: center;
+	background: #029FAE;
+	border-radius: 8px;
+	padding: 17px 24px;
+	gap: 24px;
+	width: fit-content;
+	border: 0
+}
+
+.main-button-text {
+	color: #FFFFFF;
+	font-family: 'Inter';
+	font-weight: 600;
+	font-size: 16px;
+}

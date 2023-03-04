@@ -1,0 +1,22 @@
+.main-carousel-wrapper {
+	margin-left: 90px;
+	margin-right: 90px;
+}
+
+.main-carousel-content > .carousel {
+	border-bottom-left-radius: 48px;
+	border-bottom-right-radius: 48px
+}
+
+@media (max-width: 650px) {
+	.main-carousel-wrapper {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
+	.main-carousel-content > .carousel {
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px
+	}
+}
+

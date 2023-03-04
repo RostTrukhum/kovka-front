@@ -1,0 +1,31 @@
+.main-buton-wrapper {
+	background-color: #8833FF;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	padding: 10px 20px 10px 20px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.button-icon-wrapper {
+	display: flex;
+	margin-right: 10px;
+	align-items: center;
+}
+
+.main-button-text {
+	font-family: 'Roboto';
+	font-weight: 700;
+	font-size: 12px;
+	color: white
+}
+
+.disabled-button {
+	background-color: lightgrey;
+	cursor: default;
+}
+
+.button {
+	cursor: pointer
+}

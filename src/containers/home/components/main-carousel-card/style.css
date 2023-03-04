@@ -1,0 +1,48 @@
+.main-carousel-card-wrapper {
+	background: url('../../../../assets//images/main-carousel-bg.png') center center/cover no-repeat;
+	display: flex;
+	align-items: center;
+	padding-top: 88px;
+	padding-bottom: 88px;
+}
+
+.main-carousel-card-main-content-wrapper {
+	margin-right: auto;
+}
+
+.main-carousel-card-content-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-left: 70px;
+	margin-right: 150px;
+}
+
+.main-carousel-card-subtitle {
+	color: #272343;
+	font-family: 'Inter';
+	font-weight: 400;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #272343;
+	text-align: start;
+}
+
+.main-carousel-card-title {
+	font-family: 'Inter';
+	font-weight: 700;
+	font-size: 68px;
+	max-width: 631px;
+	color: #272343;
+	text-align: start;
+}
+
+@media (max-width: 1050px) {
+	.main-carousel-card-title {
+		font-size: 30px;
+	}
+}
+
+.main-carousel-custom-button-wrapper {
+	margin-top: 24px;
+	min-width: 175px;
+}
