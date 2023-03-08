@@ -1,5 +1,5 @@
 import { IProductCardProps } from './types';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { ReactComponent as PenIcon } from '../../../../assets/icons/pen.svg';
 import { ReactComponent as TrashIcon } from '../../../../assets/icons/trash.svg';
 import {
@@ -30,9 +30,19 @@ export const ProductCard = ({
   const [productPrice, setProductPrice] = useState(price);
   const [productImage, setProductImage] = useState(img);
   const [isReloadingProducts, setIsReloadingProducts] = useState(false);
-  const { productTypes, productSubtypes } = useContext(ProductTypesContext);
+  const { productTypes } = useContext(ProductTypesContext);
   const [productType, setProductType] = useState(type || productTypes[0]?.type);
-  const [productSubtype, setProductSubtype] = useState(subtype || productSubtypes[0]?.subtype);
+  const [productSubtype, setProductSubtype] = useState(
+    subtype || productTypes[0]?.subtypes[0].subtype,
+  );
+
+  const activeSubtypes = useMemo(() => {
+    return productTypes
+      .map(type => {
+        return type?.subtypes.filter(() => type.type === productType);
+      })
+      .flat(1);
+  }, [productType]);
 
   const handleChangeProductType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setProductType(e.target.value);
@@ -131,6 +141,10 @@ export const ProductCard = ({
     }
   };
 
+  useEffect(() => {
+    setProductSubtype(activeSubtypes[0].subtype);
+  }, [productType]);
+
   return (
     <div className="product-card-wrapper">
       <div>
@@ -157,11 +171,7 @@ export const ProductCard = ({
       </div>
       <div className="product-card-input-wrapper ">
         <span className="product-card-title">тип:</span>
-        <select
-          onChange={handleChangeProductType}
-          defaultValue={productType}
-          className="product-card-select"
-        >
+        <select onChange={handleChangeProductType} className="product-card-select">
           {productTypes.map(type => (
             <option selected={type.type === productType} key={type._id} value={type.type}>
               {type.title}
@@ -176,7 +186,7 @@ export const ProductCard = ({
           defaultValue={productSubtype}
           className="product-card-select"
         >
-          {productSubtypes.map(subtype => (
+          {activeSubtypes.map(subtype => (
             <option
               selected={subtype.subtype === productSubtype}
               key={subtype._id}

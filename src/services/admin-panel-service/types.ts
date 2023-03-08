@@ -1,6 +1,7 @@
 export interface IGetProductsVariables {
   filter?: {
     type?: string;
+    subtype?: string;
     limit: number;
     skip: number;
   };
@@ -52,6 +53,7 @@ export interface IProductType {
   _id: string;
   title: string;
   type: string;
+  subtypes: IProductSubtype[];
 }
 
 export interface IProductSubtype {

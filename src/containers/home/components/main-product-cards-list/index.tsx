@@ -1,4 +1,4 @@
-import { useEffect, useState, CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 import { FETCH_PRODUCT_LIMIT } from '../../../../constants';
 import { getProducts } from '../../../../services/admin-panel-service/admin-panel.service';
 import { IProduct } from '../../../../services/admin-panel-service/types';
@@ -10,18 +10,13 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import './style.css';
 import { MainButton } from '../../../../components/main-button';
 
-const override: CSSProperties = {
-  display: 'block',
-  margin: '0 auto',
-};
-
 export const MainProductCardList = () => {
   const [activeTab, setActiveTab] = useState(PRODUCT_TABS.ALL);
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [skip, setSkip] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
+  const [skip, setSkip] = useState(0);
 
   const handleActiveProductType = (tab: PRODUCT_TABS) => () => {
     setActiveTab(tab);
@@ -69,14 +64,9 @@ export const MainProductCardList = () => {
     <div className="main-product-cards-list-wrapper">
       <span className="main-product-cards-list-title">Our Products</span>
       <MainProductsTabs activeTab={activeTab} handleActiveTab={handleActiveProductType} />
-      <ClipLoader
-        color={'#029FAE'}
-        loading={Boolean(isLoading)}
-        cssOverride={override}
-        size={100}
-      />
+      <ClipLoader color={'#029FAE'} loading={Boolean(isLoading)} size={100} />
       <div className="main-product-cards-list">
-        {products.length &&
+        {Boolean(products.length) &&
           products.map(product => (
             <MainProductCard
               key={product._id}
@@ -86,7 +76,7 @@ export const MainProductCardList = () => {
               img={product.img}
             />
           ))}
-        {!products?.length && !isLoading && (
+        {Boolean(!products?.length && !isLoading) && (
           <div className="main-product-cards-empty-list">
             <span className="main-product-cards-empty-list-text">Немає продуктів</span>
           </div>
