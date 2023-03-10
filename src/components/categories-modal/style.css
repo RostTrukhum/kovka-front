@@ -20,17 +20,27 @@
 	opacity: 1;
 }
 
+.categories-modal-title-wrapper {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #029FAE;
+	padding-bottom: 10px;
+}
+
 .categories-modal-title {
 	text-align: center;
 	font-family: 'Inter';
     font-weight: 700;
-    font-size: 30px;
+    font-size: 24px;
     color: #272343;
 	margin: 0;
+	width: fit-content;
+	margin-left: 20px;
 }
 
 .categories-modal-category-list-wrapper {
 	list-style: none;
+	padding: 0;
 }
 
 .categories-modal-category-list-title {

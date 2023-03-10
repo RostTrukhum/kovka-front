@@ -27,7 +27,9 @@ export const CategoriesBar = () => {
         </div>
         <div>
           <span className="category-contact">Contact: </span>
-          <span>(808) 555-0111</span>
+          <a className="category-phone-number" href="tel:+380931107980">
+            +38(093)110-79-80
+          </a>
         </div>
       </div>
       <CategoriesModal isVisible={isVisibleCategoriesModal} onClose={categoriesModalToggler} />

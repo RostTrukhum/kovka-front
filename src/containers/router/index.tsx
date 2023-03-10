@@ -7,8 +7,8 @@ import { SCREENS } from './constants';
 
 export const Router = () => {
   return (
-    <ProductTypesState>
-      <HashRouter>
+    <HashRouter>
+      <ProductTypesState>
         <Routes>
           <Route path={SCREENS.HOME} element={<Home />} />
           <Route path={SCREENS.ADMIN_PANEL} element={<AdminPanel />} />
@@ -16,7 +16,7 @@ export const Router = () => {
             <Route path={SCREENS.EXACT_CATEGORY} element={<Category />}></Route>
           </Route>
         </Routes>
-      </HashRouter>
-    </ProductTypesState>
+      </ProductTypesState>
+    </HashRouter>
   );
 };

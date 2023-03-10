@@ -18,6 +18,7 @@
 .nav-logo-wrapper {
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .nav-chair-icon {

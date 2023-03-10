@@ -35,8 +35,10 @@ export const CategoriesModal = ({ isVisible, onClose }: ICategoriesModalProps) =
 
   return (
     <div className={`categories-modal-wrapper ${isVisible && 'categories-modal-wrapper-opened'}`}>
-      <EmptyLeftArrowIcon onClick={onClose} cursor={'pointer'} width={20} height={20} />
-      <p className="categories-modal-title">Categories</p>
+      <div className="categories-modal-title-wrapper">
+        <EmptyLeftArrowIcon onClick={onClose} cursor={'pointer'} width={20} height={20} />
+        <p className="categories-modal-title">Categories</p>
+      </div>
       {productTypes.map(({ title, subtypes, _id, type }) => (
         <ul key={_id} className="categories-modal-category-list-wrapper">
           <div
