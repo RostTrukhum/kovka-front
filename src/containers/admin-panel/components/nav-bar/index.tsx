@@ -6,17 +6,25 @@ import { AddProductModal } from '../add-product-modal';
 import { INavBarProps } from './types';
 
 import './styles.css';
+import { useNavigate } from 'react-router-dom';
+import { SCREENS } from '../../../router/constants';
 
 export const NavBar = ({ refetchProducts }: INavBarProps) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleTriggerAddProductModal = () => {
     setIsVisibleModal(!isVisibleModal);
   };
 
+  const goHome = () => {
+    navigate(SCREENS.HOME);
+  };
+
   return (
     <div className="admin-nav-wrapper">
-      <div className="nav-title-wrapper">
+      <div onClick={goHome} className="nav-title-wrapper">
         <div className="cart-icon-wrapper">
           <CartIcon />
         </div>

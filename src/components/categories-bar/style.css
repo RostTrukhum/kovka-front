@@ -79,3 +79,8 @@
 	font-size: 14px;
 	font-family: 'Inter';
 }
+
+.category-phone-number {
+	text-decoration: none;
+	color: black
+}

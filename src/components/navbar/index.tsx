@@ -4,12 +4,20 @@ import { ReactComponent as QuoteIcon } from '../../assets/icons/quote.svg';
 import { ReactComponent as HeartIcon } from '../../assets/icons/heart.svg';
 import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
+import { SCREENS } from '../../containers/router/constants';
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate(SCREENS.HOME);
+  };
+
   return (
     <div className="nav-wrapper">
       <div className="sub-nav-wrapper ">
-        <div className="nav-logo-wrapper">
+        <div onClick={goHome} className="nav-logo-wrapper">
           <ChairIcon className="nav-chair-icon" />
           <div className="nav-logo-title">Comforty</div>
         </div>

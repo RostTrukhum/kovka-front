@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import { CategoriesBar } from '../../components/categories-bar';
 import { MainButton } from '../../components/main-button';
-import { Navbar } from '../../components/navbar';
+import { MainHeader } from '../../components/main-header';
 import { FETCH_PRODUCT_LIMIT } from '../../constants';
 import { getProducts } from '../../services/admin-panel-service/admin-panel.service';
 import { IProduct } from '../../services/admin-panel-service/types';
@@ -58,8 +57,7 @@ export const Category = () => {
 
   return (
     <div>
-      <Navbar />
-      <CategoriesBar />
+      <MainHeader />
       <div className="main-category-wrapper">
         <h2 className="category-title">{activeTitle}</h2>
         <ClipLoader color={'#029FAE'} loading={Boolean(isLoading)} size={100} />

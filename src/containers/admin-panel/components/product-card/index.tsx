@@ -1,5 +1,5 @@
 import { IProductCardProps } from './types';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { ReactComponent as PenIcon } from '../../../../assets/icons/pen.svg';
 import { ReactComponent as TrashIcon } from '../../../../assets/icons/trash.svg';
 import {
@@ -33,19 +33,21 @@ export const ProductCard = ({
   const { productTypes } = useContext(ProductTypesContext);
   const [productType, setProductType] = useState(type || productTypes[0]?.type);
   const [productSubtype, setProductSubtype] = useState(
-    subtype || productTypes[0]?.subtypes[0].subtype,
+    subtype || productTypes[0].subtypes[0].subtype,
   );
 
   const activeSubtypes = useMemo(() => {
     return productTypes
       .map(type => {
-        return type?.subtypes.filter(() => type.type === productType);
+        return type?.subtypes.filter(() => type?.type === productType);
       })
       .flat(1);
-  }, [productType]);
+  }, [productType, productTypes]);
 
   const handleChangeProductType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setProductType(e.target.value);
+    const subtype = productTypes.find(type => type.type === e.target.value)?.subtypes[0].subtype;
+    subtype && setProductSubtype(subtype);
   };
 
   const handleChangeProductSubtype = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -141,10 +143,6 @@ export const ProductCard = ({
     }
   };
 
-  useEffect(() => {
-    setProductSubtype(activeSubtypes[0].subtype);
-  }, [productType]);
-
   return (
     <div className="product-card-wrapper">
       <div>
@@ -171,9 +169,13 @@ export const ProductCard = ({
       </div>
       <div className="product-card-input-wrapper ">
         <span className="product-card-title">тип:</span>
-        <select onChange={handleChangeProductType} className="product-card-select">
-          {productTypes.map(type => (
-            <option selected={type.type === productType} key={type._id} value={type.type}>
+        <select
+          value={productType}
+          onChange={handleChangeProductType}
+          className="product-card-select"
+        >
+          {productTypes?.map(type => (
+            <option key={type._id} value={type.type}>
               {type.title}
             </option>
           ))}
@@ -181,21 +183,19 @@ export const ProductCard = ({
       </div>
       <div className="product-card-input-wrapper ">
         <span className="product-card-title">підтип:</span>
-        <select
-          onChange={handleChangeProductSubtype}
-          defaultValue={productSubtype}
-          className="product-card-select"
-        >
-          {activeSubtypes.map(subtype => (
-            <option
-              selected={subtype.subtype === productSubtype}
-              key={subtype._id}
-              value={subtype.subtype}
-            >
-              {subtype.title}
-            </option>
-          ))}
-        </select>
+        {activeSubtypes && (
+          <select
+            onChange={handleChangeProductSubtype}
+            value={productSubtype}
+            className="product-card-select"
+          >
+            {activeSubtypes?.map(subtype => (
+              <option key={subtype._id} value={subtype.subtype}>
+                {subtype.title}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
       <input onChange={handleChangeImage} className="product-card-edit-input" type={'file'} />
       <div className="product-card-edit-button-wrapper">
