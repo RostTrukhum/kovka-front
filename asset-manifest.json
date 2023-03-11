@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/kovka-front/static/css/main.7ed761e7.css",
-    "main.js": "/kovka-front/static/js/main.1b2bda19.js",
+    "main.css": "/kovka-front/static/css/main.8096b0f5.css",
+    "main.js": "/kovka-front/static/js/main.f5eafcaa.js",
     "static/media/upload-photo-placeholder.jpg": "/kovka-front/static/media/upload-photo-placeholder.65c08d093ed42e5f9611.jpg",
     "static/media/main-carousel-bg.png": "/kovka-front/static/media/main-carousel-bg.77b3217f1f5fa4da4f43.png",
     "static/media/chair.svg": "/kovka-front/static/media/chair.8bab63f7dbd8fa5574d54ad098941860.svg",
@@ -15,15 +15,14 @@
     "static/media/trash.svg": "/kovka-front/static/media/trash.4cfa926ffef7dd54e17ce553a3547b3b.svg",
     "static/media/empty-right-arrow.svg": "/kovka-front/static/media/empty-right-arrow.2b7c53f8ae436d1b7dec535f7d1b4ef6.svg",
     "static/media/heart.svg": "/kovka-front/static/media/heart.bfef2614f1938cb73e54198aa8812df8.svg",
-    "static/media/search.svg": "/kovka-front/static/media/search.2d49f4321db81eae196edff12bc444c9.svg",
     "static/media/empty-left-arrow.svg": "/kovka-front/static/media/empty-left-arrow.f544e204f5b32475aeb50cab639b9256.svg",
     "static/media/menu.svg": "/kovka-front/static/media/menu.2fa5e208f7add01c5df962d75aa099dc.svg",
     "static/media/right-arrow.svg": "/kovka-front/static/media/right-arrow.58cc496e331cb6323e69d4a4e03312f2.svg",
-    "main.7ed761e7.css.map": "/kovka-front/static/css/main.7ed761e7.css.map",
-    "main.1b2bda19.js.map": "/kovka-front/static/js/main.1b2bda19.js.map"
+    "main.8096b0f5.css.map": "/kovka-front/static/css/main.8096b0f5.css.map",
+    "main.f5eafcaa.js.map": "/kovka-front/static/js/main.f5eafcaa.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ed761e7.css",
-    "static/js/main.1b2bda19.js"
+    "static/css/main.8096b0f5.css",
+    "static/js/main.f5eafcaa.js"
   ]
 }
