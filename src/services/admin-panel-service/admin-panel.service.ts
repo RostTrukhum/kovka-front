@@ -3,6 +3,8 @@ import { BACKEND_URL, UPLOAD_PHOTO_BACKEND } from '../../constants';
 import {
   ICreateProductVariables,
   IDeleteProductVariables,
+  IGetProductByIdResponce,
+  IGetProductByIdVariables,
   IGetProductsResponce,
   IGetProductsVariables,
   IProductSubtype,
@@ -21,6 +23,21 @@ export const getProducts = async ({ filter }: IGetProductsVariables) => {
     );
 
     return products.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getProductById = async ({ id }: IGetProductByIdVariables) => {
+  try {
+    const product = await axios.get<IGetProductByIdVariables, IGetProductByIdResponce>(
+      `${BACKEND_URL}/getProductById`,
+      {
+        params: { id },
+      },
+    );
+
+    return product.data;
   } catch (e) {
     console.log(e);
   }

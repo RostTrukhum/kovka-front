@@ -1,0 +1,26 @@
+.product-counter-wrapper {
+	border-radius: 20px;
+	border: 1px solid #EEF0F4;
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 8px 5px 8px;
+	max-width: 208px;
+	margin-top: 20px;
+}
+
+.product-counter-number {
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-size: 18px;
+	color: #1D232C;
+}
+
+.product-counter-sign {
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-size: 25px;
+	color: #586A84;
+	cursor: pointer;
+}

@@ -7,6 +7,10 @@ export interface IGetProductsVariables {
   };
 }
 
+export interface IGetProductByIdVariables {
+  id: string;
+}
+
 export interface IProduct {
   _id: string;
   title: string;
@@ -22,6 +26,10 @@ export interface IGetProductsResponce {
     products: IProduct[];
     totalCount: number;
   };
+}
+
+export interface IGetProductByIdResponce {
+  data: IProduct;
 }
 
 export interface IUpdateProductVariables {

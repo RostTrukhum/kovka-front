@@ -3,10 +3,24 @@ import { ReactComponent as QuoteIcon } from '../../../../assets/icons/quote.svg'
 import { IMainProductCardProps } from './types';
 
 import './style.css';
+import { useNavigate } from 'react-router-dom';
+import { SCREENS } from '../../../router/constants';
 
-export const MainProductCard = ({ img, title, price, isAddedToCard }: IMainProductCardProps) => {
+export const MainProductCard = ({
+  img,
+  title,
+  price,
+  isAddedToCard,
+  id,
+}: IMainProductCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`${SCREENS.PRODUCT_PAGE}/${id}`);
+  };
+
   return (
-    <div className="main-product-card-wrapper">
+    <div onClick={handleClick} className="main-product-card-wrapper">
       <img className="main-product-card-img" src={img} alt={img} />
       <div className="main-product-card-data-wrapper">
         <div className="main-product-card-info-wrapper">

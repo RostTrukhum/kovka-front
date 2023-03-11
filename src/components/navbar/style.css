@@ -24,12 +24,6 @@
 	margin-right: 8px;
 }
 
-@media (max-width: 650px) {
-	.nav-chair-icon {
-		display: none;
-	}
-}
-
 .nav-logo-title {
 	color: #272343;
 	font-family: 'Inter';
@@ -69,7 +63,7 @@
 	}
 
 	.sub-nav-wrapper {
-		padding: 15px 0px 15px 0px;
+		padding: 15px 5px 15px 5px;
 	}
 }
 

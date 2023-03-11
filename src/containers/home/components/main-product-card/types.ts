@@ -3,4 +3,5 @@ export interface IMainProductCardProps {
   title: string;
   price: number;
   isAddedToCard: boolean;
+  id: string;
 }
