@@ -70,6 +70,7 @@ export const Category = () => {
                 price={product.price}
                 isAddedToCard={false}
                 img={product.img}
+                id={product._id}
               />
             ))}
           {Boolean(!products?.length && !isLoading) && (

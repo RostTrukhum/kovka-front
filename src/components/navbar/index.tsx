@@ -21,7 +21,6 @@ export const Navbar = () => {
           <ChairIcon className="nav-chair-icon" />
           <div className="nav-logo-title">Comforty</div>
         </div>
-        <Search />
         <div className="search-buttons-wrapper">
           <div className="search-button unique-search-button">
             <QuoteIcon />

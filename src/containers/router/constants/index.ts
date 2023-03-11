@@ -3,4 +3,6 @@ export const SCREENS = {
   HOME: '/',
   CATEGORY: '/category',
   EXACT_CATEGORY: ':type/:subtype',
+  PRODUCT_PAGE: '/product',
+  PRODUCT: ':productId',
 };
