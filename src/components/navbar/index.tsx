@@ -21,6 +21,14 @@ export const Navbar = () => {
           <ChairIcon className="nav-chair-icon" />
           <div className="nav-logo-title">Comforty</div>
         </div>
+        <div className="nav-phone-number-wrapper">
+          <a className="nav-phone-number" href="tel:+380931107980">
+            +38(093)110-79-80
+          </a>
+          <a className="nav-phone-number" href="tel:+380931107980">
+            +38(093)110-79-80
+          </a>
+        </div>
         <div className="search-buttons-wrapper">
           <div className="search-button unique-search-button">
             <QuoteIcon />
