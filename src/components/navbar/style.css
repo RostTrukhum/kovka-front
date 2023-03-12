@@ -93,3 +93,26 @@
 	color: #FFFFFF;
 	border-radius: 20px;
 }
+
+.nav-phone-number-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+
+}
+
+.nav-phone-number {
+	text-decoration: none;
+	color: #272343;
+	font-weight: 500;
+	font-size: 14px;
+	font-family: 'Inter';
+	transition: 0.5s all;
+	font-size: 20px;
+}
+
+.nav-phone-number:hover {
+	color: #007580
+}

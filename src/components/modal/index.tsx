@@ -3,7 +3,7 @@ import { IModalProps } from './types';
 
 import './styles.css';
 
-export const Modal = ({ isVisible, onClose, children }: IModalProps) => {
+export const Modal = ({ isVisible, onClose, children, customClass }: IModalProps) => {
   useEffect(() => {
     if (isVisible) {
       document.body.style.overflow = 'hidden';
@@ -22,7 +22,7 @@ export const Modal = ({ isVisible, onClose, children }: IModalProps) => {
 
   return (
     <div onClick={onClose} className="modal-wrapper">
-      <div onClick={handleStopPropagation} className="modal-content-wrapper">
+      <div onClick={handleStopPropagation} className={`modal-content-wrapper ${customClass}`}>
         {children}
       </div>
     </div>

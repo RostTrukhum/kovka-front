@@ -13,7 +13,7 @@ export const MainButton = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`main-button-wrapper ${customWrapperClass}`}
+      className={`main-button-wrapper ${customWrapperClass} ${disabled && 'main-button-disabled'}`}
     >
       <span className="main-button-text">{text}</span>
       {icon && icon}

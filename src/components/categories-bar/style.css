@@ -65,22 +65,3 @@
 .category-button-active {
 	color: #007580;
 }
-
-.category-contact {
-	font-family: 'Inter';
-	font-weight: 400;
-	font-size: 14px;
-	color: #636270;
-}
-
-.category-phone {
-	color: #272343;
-	font-weight: 500;
-	font-size: 14px;
-	font-family: 'Inter';
-}
-
-.category-phone-number {
-	text-decoration: none;
-	color: black
-}

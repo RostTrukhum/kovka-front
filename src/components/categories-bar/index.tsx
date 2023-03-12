@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg';
+import { CallBackModal } from '../call-back-modal';
 import { CategoriesModal } from '../categories-modal';
+import { MainButton } from '../main-button';
 
 import './style.css';
 
 export const CategoriesBar = () => {
   const [isVisibleCategoriesModal, setIsVisibleCategoriesModal] = useState(false);
+  const [isVisibleCallBackModal, setIsVisibleCallBackModal] = useState(false);
 
   const categoriesModalToggler = () => {
     setIsVisibleCategoriesModal(!isVisibleCategoriesModal);
+  };
+
+  const handleCallBackModalToggler = () => {
+    setIsVisibleCallBackModal(!isVisibleCallBackModal);
   };
 
   return (
@@ -19,20 +26,16 @@ export const CategoriesBar = () => {
             <MenuIcon />
             All categories
           </div>
-          <span className="category-button category-button-active">Home</span>
+          {/* <span className="category-button category-button-active">Home</span>
           <span className="category-button">Shop</span>
           <span className="category-button">Product</span>
           <span className="category-button">Pages</span>
-          <span className="category-button">About</span>
+          <span className="category-button">About</span> */}
         </div>
-        <div>
-          <span className="category-contact">Contact: </span>
-          <a className="category-phone-number" href="tel:+380931107980">
-            +38(093)110-79-80
-          </a>
-        </div>
+        <MainButton onClick={handleCallBackModalToggler} text="Замовити дзвінок" />
       </div>
       <CategoriesModal isVisible={isVisibleCategoriesModal} onClose={categoriesModalToggler} />
+      <CallBackModal isVisible={isVisibleCallBackModal} onClose={handleCallBackModalToggler} />
     </div>
   );
 };

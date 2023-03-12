@@ -1,0 +1,61 @@
+.call-back-modal-wrapper {
+	display: flex;
+	width: 50vw;
+	flex-direction: column;
+	align-items: flex-end;
+	background: #FFFFFF;
+	border: 1.3px solid #DEE2E6;
+	box-shadow: 0px 0px 2.61075px rgba(0, 0, 0, 0.12), 0px 26.1075px 26.1075px rgba(0, 0, 0, 0.08);
+	border-radius: 10px;
+	padding: 13px 13px 47px 13px;
+	min-width: 320px;
+}
+
+.call-back-cross-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #E5E5E5;
+	border-radius: 37px;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+
+.call-back-modal-content-wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+}
+
+.call-back-modal-title {
+	font-family: 'Inter';
+	font-weight: 600;
+	font-size: 26px;
+	color: #54595E;
+	text-align: center;
+}
+
+.call-back-modal-input {
+	text-align: center;
+	width: 70%;
+	border: 1.3px solid #D1D1D1;
+	border-radius: 10px;
+	height: 55px;
+	font-family: 'Inter';
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.call-back-modal-input:focus {
+	outline: none;
+}
+
+.call-back-modal-button {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	width: 70%
+}
