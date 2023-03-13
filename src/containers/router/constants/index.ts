@@ -5,4 +5,5 @@ export const SCREENS = {
   EXACT_CATEGORY: ':type/:subtype',
   PRODUCT_PAGE: '/product',
   PRODUCT: ':productId',
+  CART: '/cart',
 };

@@ -1,0 +1,16 @@
+.cart-content-wrapper {
+	padding-top: 170px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.cart-title {
+	font-family: "Inter";
+	font-weight: 500;
+}
+
+.cart-products-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
