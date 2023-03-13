@@ -53,6 +53,7 @@
 	background: #FFFFFF;
 	border-radius: 8px;
 	gap: 12px;
+	cursor: pointer;
 }
 
 @media (max-width: 600px) {

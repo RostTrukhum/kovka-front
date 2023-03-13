@@ -72,9 +72,10 @@ export const MainProductCardList = () => {
               key={product._id}
               title={product.title}
               price={product.price}
-              isAddedToCard={false}
               img={product.img}
               id={product._id}
+              type={product?.type}
+              subtype={product?.subtype}
             />
           ))}
         {Boolean(!products?.length && !isLoading) && (

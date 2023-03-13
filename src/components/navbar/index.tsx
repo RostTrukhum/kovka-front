@@ -6,9 +6,18 @@ import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 import { SCREENS } from '../../containers/router/constants';
+import { useContext } from 'react';
+import { CartContext } from '../../containers/cart/context';
+import { ClipLoader } from 'react-spinners';
 
 export const Navbar = () => {
+  const { isLoading: isCartLoading, cart } = useContext(CartContext);
+
   const navigate = useNavigate();
+
+  const handleCartClick = () => {
+    navigate(SCREENS.CART);
+  };
 
   const goHome = () => {
     navigate(SCREENS.HOME);
@@ -30,10 +39,13 @@ export const Navbar = () => {
           </a>
         </div>
         <div className="search-buttons-wrapper">
-          <div className="search-button unique-search-button">
+          <div onClick={handleCartClick} className="search-button unique-search-button">
             <QuoteIcon />
             <div className="search-button-text">Cart</div>
-            <div className="search-cart-couter">2</div>
+            <div className="search-cart-couter">
+              {!isCartLoading && cart?.products?.length}
+              <ClipLoader loading={isCartLoading} size={5} color="#ffff" />
+            </div>
           </div>
           <div className="search-button">
             <HeartIcon />
