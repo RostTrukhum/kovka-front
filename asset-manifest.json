@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/kovka-front/static/css/main.38f6e832.css",
-    "main.js": "/kovka-front/static/js/main.b4fc47cf.js",
+    "main.css": "/kovka-front/static/css/main.767de4ac.css",
+    "main.js": "/kovka-front/static/js/main.b80a7cff.js",
     "static/media/upload-photo-placeholder.jpg": "/kovka-front/static/media/upload-photo-placeholder.65c08d093ed42e5f9611.jpg",
     "static/media/main-carousel-bg.png": "/kovka-front/static/media/main-carousel-bg.77b3217f1f5fa4da4f43.png",
     "static/media/chair.svg": "/kovka-front/static/media/chair.8bab63f7dbd8fa5574d54ad098941860.svg",
@@ -19,11 +19,11 @@
     "static/media/cross.svg": "/kovka-front/static/media/cross.90e54e388f35190992904a36fe7d907e.svg",
     "static/media/menu.svg": "/kovka-front/static/media/menu.2fa5e208f7add01c5df962d75aa099dc.svg",
     "static/media/right-arrow.svg": "/kovka-front/static/media/right-arrow.58cc496e331cb6323e69d4a4e03312f2.svg",
-    "main.38f6e832.css.map": "/kovka-front/static/css/main.38f6e832.css.map",
-    "main.b4fc47cf.js.map": "/kovka-front/static/js/main.b4fc47cf.js.map"
+    "main.767de4ac.css.map": "/kovka-front/static/css/main.767de4ac.css.map",
+    "main.b80a7cff.js.map": "/kovka-front/static/js/main.b80a7cff.js.map"
   },
   "entrypoints": [
-    "static/css/main.38f6e832.css",
-    "static/js/main.b4fc47cf.js"
+    "static/css/main.767de4ac.css",
+    "static/js/main.b80a7cff.js"
   ]
 }
