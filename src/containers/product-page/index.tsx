@@ -37,7 +37,7 @@ export const ProductPage = () => {
       return;
     }
 
-    if (!cart?._id) {
+    if (!localStorage.getItem('cart_id')) {
       setIsAddingToCart(true);
       setIsLoadingCart(true);
       const cart = await createCart({

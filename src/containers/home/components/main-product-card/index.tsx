@@ -45,7 +45,7 @@ export const MainProductCard = ({
       count: 1,
     };
 
-    if (cart._id) {
+    if (localStorage.getItem('cart_id')) {
       setIsAddToCartLoading(true);
       setIsCartLoading(true);
       const newCart = await addToCart({
