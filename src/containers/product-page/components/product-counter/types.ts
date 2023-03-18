@@ -3,4 +3,5 @@ export interface IProductCounterProps {
   handlePlus: () => void;
   count: number;
   customWrapperClass?: string;
+  isLoading?: boolean;
 }

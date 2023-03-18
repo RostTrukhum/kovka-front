@@ -1,9 +1,8 @@
-import { ICreateCartResponceProduct } from '../../../services/cart-service/types';
+import { ICartProduct } from '../../../services/cart-service/types';
 
 export interface ICart {
   _id: string;
-  amount: number;
-  products: ICreateCartResponceProduct[];
+  products: ICartProduct[];
 }
 
 export interface ICartState {

@@ -1,18 +1,20 @@
 import axios from 'axios';
 import { BACKEND_URL } from '../../constants';
 import {
+  IAddToCartVariables,
   ICreateCartResponce,
   ICreateCartVariables,
+  IDeleteProductCartVariables,
   IGetCartResponse,
   IGetCartVariables,
-  IUpdateCartVariables,
+  IUpdateCartProductCountVariables,
 } from './types';
 
-export const getCart = async ({ id }: IGetCartVariables) => {
+export const getCart = async ({ cartId }: IGetCartVariables) => {
   try {
     const cart = await axios.get<IGetCartResponse>(`${BACKEND_URL}/getCart`, {
       params: {
-        id,
+        cartId,
       },
     });
 
@@ -26,12 +28,13 @@ export const getCart = async ({ id }: IGetCartVariables) => {
   }
 };
 
-export const createCart = async ({ product }: ICreateCartVariables) => {
+export const createCart = async ({ productId, productCount }: ICreateCartVariables) => {
   try {
     const cart = await axios.post<ICreateCartVariables, ICreateCartResponce>(
       `${BACKEND_URL}/createCart`,
       {
-        product,
+        productId,
+        productCount,
       },
     );
 
@@ -43,19 +46,57 @@ export const createCart = async ({ product }: ICreateCartVariables) => {
   }
 };
 
-export const addToCart = async ({ product, id }: IUpdateCartVariables) => {
+export const addToCart = async ({ cartId, productCount, productId }: IAddToCartVariables) => {
   try {
-    const updatedCart = await axios.post<IUpdateCartVariables, ICreateCartResponce>(
+    const updatedCart = await axios.post<IAddToCartVariables, ICreateCartResponce>(
       `${BACKEND_URL}/addToCart`,
       {
-        id,
-        product,
+        cartId,
+        productCount,
+        productId,
       },
     );
 
     if (!updatedCart?.data?._id) {
       localStorage.removeItem('cart_id');
     }
+
+    return updatedCart?.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteProductCart = async ({ cartId, cartProductId }: IDeleteProductCartVariables) => {
+  try {
+    const updatedCart = await axios.post<IDeleteProductCartVariables, ICreateCartResponce>(
+      `${BACKEND_URL}/deleteProductCart`,
+      {
+        cartId,
+        cartProductId,
+      },
+    );
+
+    return updatedCart?.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updateCartProductCount = async ({
+  cartId,
+  cartProductId,
+  productCount,
+}: IUpdateCartProductCountVariables) => {
+  try {
+    const updatedCart = await axios.post<IUpdateCartProductCountVariables, ICreateCartResponce>(
+      `${BACKEND_URL}/updateCartProductCount`,
+      {
+        cartId,
+        cartProductId,
+        productCount,
+      },
+    );
 
     return updatedCart?.data;
   } catch (err) {

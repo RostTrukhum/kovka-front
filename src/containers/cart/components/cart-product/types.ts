@@ -1,5 +1,3 @@
-import { ICreateCartResponceProduct } from '../../../../services/cart-service/types';
-
 export interface ICartProductProps {
   id: string;
   title: string;
@@ -9,4 +7,5 @@ export interface ICartProductProps {
   subtype: string;
   productId: string;
   count: number;
+  cartId: string;
 }

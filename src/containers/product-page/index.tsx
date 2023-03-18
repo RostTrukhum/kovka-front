@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { getProductById } from '../../services/admin-panel-service/admin-panel.service';
 import { IProduct } from '../../services/admin-panel-service/types';
+import { addToCart, createCart } from '../../services/cart-service/cart.service';
+import { CartContext } from '../cart/context';
 import { ProductCounter } from './components/product-counter';
 import './style.css';
 
@@ -12,23 +14,47 @@ export const ProductPage = () => {
   const [product, setProduct] = useState<IProduct>();
   const [productCount, setProductCount] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isChangingProductCount, setIsChangingProductCount] = useState(false);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const { cart, setCart, setIsLoading: setIsLoadingCart } = useContext(CartContext);
 
   const { productId } = useParams<{ productId: string }>();
 
   const handlePlus = () => {
-    if (productCount > 99) {
-      return;
-    }
-
+    setIsChangingProductCount(true);
     setProductCount(prev => prev + 1);
+    setIsChangingProductCount(false);
   };
 
   const handleMinus = () => {
-    if (productCount === 1) {
+    setIsChangingProductCount(true);
+    setProductCount(prev => prev - 1);
+    setIsChangingProductCount(false);
+  };
+
+  const handleAddToCart = async () => {
+    if (!productId) {
       return;
     }
 
-    setProductCount(prev => prev - 1);
+    if (!cart?._id) {
+      setIsAddingToCart(true);
+      setIsLoadingCart(true);
+      const cart = await createCart({
+        productId,
+      });
+      cart && setCart(cart);
+      setIsLoadingCart(false);
+      setIsAddingToCart(false);
+      return;
+    }
+
+    setIsAddingToCart(true);
+    setIsLoadingCart(true);
+    const newCart = await addToCart({ cartId: cart._id, productId, productCount });
+    newCart && setCart(newCart);
+    setIsLoadingCart(false);
+    setIsAddingToCart(false);
   };
 
   useEffect(() => {
@@ -80,11 +106,14 @@ export const ProductPage = () => {
                 handleMinus={handleMinus}
                 handlePlus={handlePlus}
                 count={productCount}
+                isLoading={isChangingProductCount}
               />
               <MainButton
                 customWrapperClass="product-page-cart-button"
-                onClick={() => {}}
+                onClick={handleAddToCart}
                 text="Add to cart"
+                disabled={isAddingToCart}
+                isLoading={isAddingToCart}
               />
             </div>
           </>

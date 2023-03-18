@@ -88,6 +88,7 @@ export const Category = () => {
             }`}
             text="Загрузити ще"
             disabled={isLoadingMore}
+            isLoading={isLoadingMore}
           />
         )}
       </div>

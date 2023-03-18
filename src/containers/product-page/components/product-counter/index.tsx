@@ -1,3 +1,4 @@
+import { ClipLoader } from 'react-spinners';
 import './style.css';
 import { IProductCounterProps } from './types';
 
@@ -6,6 +7,7 @@ export const ProductCounter = ({
   handleMinus,
   handlePlus,
   customWrapperClass,
+  isLoading,
 }: IProductCounterProps) => {
   const handleCountPlus = () => {
     if (count === 99) {
@@ -27,7 +29,9 @@ export const ProductCounter = ({
       <div onClick={handleCountMinus} className="product-counter-sign">
         —
       </div>
-      <div className="product-counter-number">{count}</div>
+      <div className="product-counter-number">
+        {isLoading ? <ClipLoader size={15} loading={isLoading} /> : count}
+      </div>
       <div onClick={handleCountPlus} className="product-counter-sign">
         +
       </div>

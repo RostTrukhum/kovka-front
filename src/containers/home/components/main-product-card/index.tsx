@@ -49,13 +49,15 @@ export const MainProductCard = ({
       setIsAddToCartLoading(true);
       setIsCartLoading(true);
       const newCart = await addToCart({
-        id: cart._id,
-        product: product,
+        cartId: cart._id,
+        productId: id,
       });
       if (newCart) {
         setCart(newCart);
       } else {
-        const cart = await createCart({ product });
+        const cart = await createCart({
+          productId: id,
+        });
         cart && setCart(cart);
       }
       setIsCartLoading(false);
@@ -64,7 +66,7 @@ export const MainProductCard = ({
       setIsAddToCartLoading(true);
 
       setIsCartLoading(true);
-      const cart = await createCart({ product });
+      const cart = await createCart({ productId: id });
       cart && setCart(cart);
       setIsCartLoading(false);
       setIsAddToCartLoading(false);
