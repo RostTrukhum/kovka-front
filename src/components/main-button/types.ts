@@ -4,4 +4,5 @@ export interface IMainButtonProps {
   icon?: JSX.Element;
   onClick: () => void;
   disabled?: boolean;
+  isLoading?: boolean;
 }

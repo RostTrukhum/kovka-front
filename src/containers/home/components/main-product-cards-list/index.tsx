@@ -92,6 +92,7 @@ export const MainProductCardList = () => {
           }`}
           text="Загрузити ще"
           disabled={isLoadingMore}
+          isLoading={isLoadingMore}
         />
       )}
     </div>

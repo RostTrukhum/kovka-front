@@ -53,6 +53,7 @@ export const CallBackModal = ({ isVisible, onClose }: ICallBackModal) => {
               />
               <MainButton
                 disabled={!phoneNumber || isLoading}
+                isLoading={isLoading}
                 customWrapperClass="call-back-modal-button"
                 text="Зворотній дзвінок"
                 onClick={handleCallBack}

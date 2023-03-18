@@ -1,6 +1,7 @@
 import { IMainButtonProps } from './types';
 
 import './style.css';
+import { ClipLoader } from 'react-spinners';
 
 export const MainButton = ({
   text,
@@ -8,6 +9,7 @@ export const MainButton = ({
   icon,
   onClick,
   disabled,
+  isLoading,
 }: IMainButtonProps) => {
   return (
     <button
@@ -15,8 +17,9 @@ export const MainButton = ({
       onClick={onClick}
       className={`main-button-wrapper ${customWrapperClass} ${disabled && 'main-button-disabled'}`}
     >
-      <span className="main-button-text">{text}</span>
-      {icon && icon}
+      <ClipLoader loading={Boolean(isLoading)} size={20} color="#ffff" />
+      {!isLoading && <span className="main-button-text">{text}</span>}
+      {icon && !isLoading && icon}
     </button>
   );
 };

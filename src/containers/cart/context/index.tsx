@@ -24,7 +24,7 @@ export const CartState = ({ children }: ICartContext) => {
   const handleFetchInitialCart = async () => {
     if (cartId) {
       setIsLoading(true);
-      const cart = await getCart({ id: cartId });
+      const cart = await getCart({ cartId });
       cart && setCart(cart);
       setIsLoading(false);
     }

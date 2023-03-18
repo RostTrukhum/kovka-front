@@ -1,43 +1,53 @@
 import { IProduct } from '../admin-panel-service/types';
 
 export interface IGetCartVariables {
-  id: string;
+  cartId: string;
 }
 
 export interface ICartProduct {
-  title: string;
-  price: number;
-  img: string;
-  type: string;
-  subtype: string;
-  createdAt: Date;
-  productId: string;
+  product: {
+    _id: string;
+    title: string;
+    price: number;
+    img: string;
+    type: string;
+    subtype: string;
+    createdAt: Date;
+  };
   count: number;
-}
-
-export interface ICreateCartResponceProduct extends ICartProduct {
   _id: string;
 }
 
 export interface IGetCartResponse {
   _id: string;
-  amount: number;
-  products: ICreateCartResponceProduct[];
+  products: ICartProduct[];
 }
 
 export interface ICreateCartVariables {
-  product: ICartProduct;
+  productId: string;
+  productCount?: number;
 }
 
 export interface ICreateCartResponce {
   data: {
     _id: string;
-    amount: number;
-    products: ICreateCartResponceProduct[];
+    products: ICartProduct[];
   };
 }
 
-export interface IUpdateCartVariables {
-  id: string;
-  product: ICartProduct;
+export interface IAddToCartVariables {
+  cartId: string;
+  productCount?: number;
+  productId: string;
+}
+
+export interface IDeleteProductCartVariables {
+  cartId: string;
+  cartProductId: string;
+}
+
+export interface IUpdateCartProductCountVariables {
+  cartId: string;
+  cartProductId: string;
+  productCount: number;
 }
