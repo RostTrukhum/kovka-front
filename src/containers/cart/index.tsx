@@ -1,5 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
+import { CallBackModal } from '../../components/call-back-modal';
+import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { CartProduct } from './components/cart-product/cart-product';
 import { CartContext } from './context';
@@ -8,6 +10,21 @@ import './style.css';
 
 export const Cart = () => {
   const { cart, isLoading } = useContext(CartContext);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  let cartPrice = 0;
+
+  cart.products.forEach(product => {
+    cartPrice += product.count * product.product.price;
+  });
+
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
 
   return (
     <>
@@ -33,7 +50,19 @@ export const Cart = () => {
               cartId={cart?._id}
             />
           ))}
+          <CallBackModal
+            cartPrice={cartPrice}
+            products={cart?.products}
+            isVisible={isModalVisible}
+            onClose={handleCloseModal}
+          />
         </div>
+        {!isLoading && !!cart.products.length && (
+          <div className="cart-make-order-wrapper">
+            <MainButton onClick={handleOpenModal} text="Оформити замовлення" />
+            Сума: {cartPrice}
+          </div>
+        )}
       </div>
     </>
   );

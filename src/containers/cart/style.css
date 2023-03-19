@@ -2,6 +2,7 @@
 	padding-top: 170px;
 	padding-left: 30px;
 	padding-right: 30px;
+	padding-bottom: 130px;
 }
 
 .cart-title {
@@ -23,4 +24,24 @@
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+}
+
+.cart-make-order-wrapper {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #F7F8FA;
+	padding: 10px 10px 10px 10px;
+	gap: 10px;
+	font-size: 20px;
+}
+
+@media (max-width: 440px) {
+	.cart-make-order-wrapper {
+		flex-direction: column;
+	}
 }

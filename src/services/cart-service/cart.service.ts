@@ -4,6 +4,7 @@ import {
   IAddToCartVariables,
   ICreateCartResponce,
   ICreateCartVariables,
+  IDeleteCartVariables,
   IDeleteProductCartVariables,
   IGetCartResponse,
   IGetCartVariables,
@@ -41,6 +42,20 @@ export const createCart = async ({ productId, productCount }: ICreateCartVariabl
     localStorage.setItem('cart_id', cart?.data._id);
 
     return cart?.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteCart = async ({ cartId }: IDeleteCartVariables) => {
+  try {
+    const cart = await axios.post<IDeleteCartVariables>(`${BACKEND_URL}/deleteCart`, {
+      cartId,
+    });
+
+    localStorage.removeItem('cart_id');
+
+    return cart.data;
   } catch (err) {
     console.log(err);
   }

@@ -4,17 +4,28 @@ import { ReactComponent as CrossIcon } from '../../assets/icons/cross.svg';
 
 import './style.css';
 import { MainButton } from '../main-button';
-import { sendCallBack } from '../../services/home-service/home.service';
-import { useEffect, useState } from 'react';
+import { sendCallBack, sendCartCallBack } from '../../services/home-service/home.service';
+import { useContext, useEffect, useState } from 'react';
+import { deleteCart } from '../../services/cart-service/cart.service';
+import { CartContext } from '../../containers/cart/context';
 
-export const CallBackModal = ({ isVisible, onClose }: ICallBackModal) => {
+export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICallBackModal) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSendedCallBack, setIsSendedCallBack] = useState(false);
+  const { cart, setCart } = useContext(CartContext);
+
+  const handleCartCallBack = async () => {
+    if (products && cartPrice) {
+      await sendCartCallBack({ products, totalPrice: cartPrice, phoneNumber });
+      await deleteCart({ cartId: cart?._id });
+      setCart({ _id: '', products: [] });
+    }
+  };
 
   const handleCallBack = async () => {
     setIsLoading(true);
-    await sendCallBack({ phoneNumber });
+    products ? await handleCartCallBack() : await sendCallBack({ phoneNumber });
     setIsSendedCallBack(true);
     setIsLoading(false);
   };

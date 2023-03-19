@@ -14,8 +14,12 @@ export const CategoriesBar = () => {
     setIsVisibleCategoriesModal(!isVisibleCategoriesModal);
   };
 
-  const handleCallBackModalToggler = () => {
-    setIsVisibleCallBackModal(!isVisibleCallBackModal);
+  const handleOpenCallBackModal = () => {
+    setIsVisibleCallBackModal(true);
+  };
+
+  const handleCloseCallBackModal = () => {
+    setIsVisibleCallBackModal(false);
   };
 
   return (
@@ -32,10 +36,10 @@ export const CategoriesBar = () => {
           <span className="category-button">Pages</span>
           <span className="category-button">About</span> */}
         </div>
-        <MainButton onClick={handleCallBackModalToggler} text="Замовити дзвінок" />
+        <MainButton onClick={handleOpenCallBackModal} text="Замовити дзвінок" />
       </div>
       <CategoriesModal isVisible={isVisibleCategoriesModal} onClose={categoriesModalToggler} />
-      <CallBackModal isVisible={isVisibleCallBackModal} onClose={handleCallBackModalToggler} />
+      <CallBackModal isVisible={isVisibleCallBackModal} onClose={handleCloseCallBackModal} />
     </div>
   );
 };

@@ -1,11 +1,11 @@
 .modal-wrapper {
 	display: flex;
 	justify-content: center;
-	position: absolute;
+	position: fixed;
 	width: 100vw;
 	height: 150vh;
 	background-color: rgba(108, 122, 137, 0.5);
-	z-index: 3;
+	z-index: 100;
 	top: 0;
 	left: 0;
 }

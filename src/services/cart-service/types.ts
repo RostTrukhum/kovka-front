@@ -23,6 +23,9 @@ export interface IGetCartResponse {
   products: ICartProduct[];
 }
 
+export interface IDeleteCartVariables {
+  cartId: string;
+}
 export interface ICreateCartVariables {
   productId: string;
   productCount?: number;

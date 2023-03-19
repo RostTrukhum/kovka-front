@@ -9,9 +9,10 @@ export const MainCarousel = () => {
     <div className="main-carousel-wrapper">
       <Carousel
         className="main-carousel-content"
-        emulateTouch={true}
         showArrows={false}
         showStatus={false}
+        preventMovementUntilSwipeScrollTolerance={true}
+        swipeScrollTolerance={50}
       >
         <MainCarouselCard
           title="Welcome to chairy"
