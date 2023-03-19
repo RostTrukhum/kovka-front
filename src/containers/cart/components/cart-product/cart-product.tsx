@@ -33,11 +33,12 @@ export const CartProduct = ({
   const handlePlus = async () => {
     if (isChangingCartProductCount) return;
     setIsChanginCartProductCount(true);
-    await updateCartProductCount({
+    const updatedCart = await updateCartProductCount({
       cartProductId: id,
       productCount: countOfProduct + 1,
       cartId,
     });
+    updatedCart && setCart(updatedCart);
     setCountOfProduct(prev => prev + 1);
     setIsChanginCartProductCount(false);
   };
@@ -45,11 +46,12 @@ export const CartProduct = ({
   const handleMinus = async () => {
     if (isChangingCartProductCount) return;
     setIsChanginCartProductCount(true);
-    await updateCartProductCount({
+    const updatedCart = await updateCartProductCount({
       cartProductId: id,
       productCount: countOfProduct - 1,
       cartId,
     });
+    updatedCart && setCart(updatedCart);
     setCountOfProduct(prev => prev - 1);
     setIsChanginCartProductCount(false);
   };
