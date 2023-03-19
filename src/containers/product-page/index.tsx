@@ -14,22 +14,17 @@ export const ProductPage = () => {
   const [product, setProduct] = useState<IProduct>();
   const [productCount, setProductCount] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [isChangingProductCount, setIsChangingProductCount] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { cart, setCart, setIsLoading: setIsLoadingCart } = useContext(CartContext);
 
   const { productId } = useParams<{ productId: string }>();
 
   const handlePlus = () => {
-    setIsChangingProductCount(true);
     setProductCount(prev => prev + 1);
-    setIsChangingProductCount(false);
   };
 
   const handleMinus = () => {
-    setIsChangingProductCount(true);
     setProductCount(prev => prev - 1);
-    setIsChangingProductCount(false);
   };
 
   const handleAddToCart = async () => {
@@ -106,7 +101,6 @@ export const ProductPage = () => {
                 handleMinus={handleMinus}
                 handlePlus={handlePlus}
                 count={productCount}
-                isLoading={isChangingProductCount}
               />
               <MainButton
                 customWrapperClass="product-page-cart-button"

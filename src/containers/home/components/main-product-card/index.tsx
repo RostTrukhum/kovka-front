@@ -34,17 +34,6 @@ export const MainProductCard = ({
 
     e.stopPropagation();
 
-    const product = {
-      img,
-      title,
-      price,
-      type,
-      subtype,
-      createdAt: new Date(),
-      productId: id,
-      count: 1,
-    };
-
     if (localStorage.getItem('cart_id')) {
       setIsAddToCartLoading(true);
       setIsCartLoading(true);
