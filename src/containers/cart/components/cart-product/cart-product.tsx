@@ -90,7 +90,7 @@ export const CartProduct = ({
             handlePlus={handlePlus}
             isLoading={isChangingCartProductCount}
           />
-          {<h3 className="cart-product-price">{price * countOfProduct}грн</h3>}
+          {<h3 className="cart-product-price">{price * countOfProduct} грн</h3>}
         </div>
       </div>
     </div>

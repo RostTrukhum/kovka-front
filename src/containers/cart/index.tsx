@@ -60,7 +60,7 @@ export const Cart = () => {
         {!isLoading && !!cart.products.length && (
           <div className="cart-make-order-wrapper">
             <MainButton onClick={handleOpenModal} text="Оформити замовлення" />
-            Сума: {cartPrice}
+            Сума: {cartPrice} грн
           </div>
         )}
       </div>

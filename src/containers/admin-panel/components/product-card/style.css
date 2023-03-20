@@ -26,7 +26,9 @@
 }
 
 .product-card-input-wrapper {
-	margin-top: 20px;
+	margin-top: 20px;	
+	display: flex;
+	align-items: center;
 }
 
 .product-card-input {
@@ -90,4 +92,20 @@
 
 .product-card-save-button {
 	margin-top: 10px;
+}
+
+.product-custom-description-button {
+	height: 27px;
+	padding: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	background: white
+}
+
+.product-custom-description-button-text {
+    font-family: 'Inter' !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+	color: black !important;
 }

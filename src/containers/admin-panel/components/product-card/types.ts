@@ -9,4 +9,5 @@ export interface IProductCardProps {
   onCloseModal?: () => void;
   type: string;
   subtype: string;
+  description: string;
 }

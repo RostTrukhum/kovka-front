@@ -13,6 +13,7 @@ import UploadPhotoBanner from '../../../../assets/images/upload-photo-placeholde
 
 import './style.css';
 import { ProductTypesContext } from '../../context';
+import { ProductDescriptionModal } from '../product-description-modal';
 
 export const ProductCard = ({
   img,
@@ -25,6 +26,7 @@ export const ProductCard = ({
   onCloseModal,
   type,
   subtype,
+  description,
 }: IProductCardProps) => {
   const [productTitle, setProductTitle] = useState(title);
   const [productPrice, setProductPrice] = useState(price);
@@ -35,6 +37,16 @@ export const ProductCard = ({
   const [productSubtype, setProductSubtype] = useState(
     subtype || productTypes[0].subtypes[0].subtype,
   );
+  const [isProductModalVisible, setIsProductModalVisible] = useState(false);
+  const [productDescription, setProductDescription] = useState(description);
+
+  const handleShowProductDescriptionModal = () => {
+    setIsProductModalVisible(true);
+  };
+
+  const handleCloseProductDescriptionModal = () => {
+    setIsProductModalVisible(false);
+  };
 
   const activeSubtypes = useMemo(() => {
     return productTypes
@@ -59,6 +71,7 @@ export const ProductCard = ({
       !productTitle ||
       !productPrice ||
       !productImage ||
+      !productDescription ||
       isReloadingProducts ||
       productImage === UploadPhotoBanner
     ) {
@@ -70,6 +83,7 @@ export const ProductCard = ({
       productPrice !== price ||
       productImage !== img ||
       productType !== type ||
+      productDescription !== description ||
       productSubtype !== subtype
     ) {
       return true;
@@ -87,6 +101,7 @@ export const ProductCard = ({
           img: productImage,
           type: productType,
           subtype: productSubtype,
+          description: productDescription,
         });
         refetchProductsCallBack && (await refetchProductsCallBack(true));
         onCloseModal && onCloseModal();
@@ -101,6 +116,7 @@ export const ProductCard = ({
           img: productImage,
           type: productType,
           subtype: productSubtype,
+          description: productDescription,
           id,
         });
         refetchProductsCallBack && (await refetchProductsCallBack(true));
@@ -182,6 +198,15 @@ export const ProductCard = ({
         </select>
       </div>
       <div className="product-card-input-wrapper ">
+        <span className="product-card-title">опис:</span>
+        <Button
+          textClass="product-custom-description-button-text"
+          wrapperClass="product-custom-description-button"
+          text="Змінити опис"
+          onClick={handleShowProductDescriptionModal}
+        />
+      </div>
+      <div className="product-card-input-wrapper">
         <span className="product-card-title">підтип:</span>
         {activeSubtypes && (
           <select
@@ -211,6 +236,12 @@ export const ProductCard = ({
         wrapperClass="product-card-save-button"
         text={buttonText || (isReloadingProducts ? 'Обновляється...' : 'Обновити')}
         disabled={!checkForAnyUpdates()}
+      />
+      <ProductDescriptionModal
+        isVisible={isProductModalVisible}
+        onClose={handleCloseProductDescriptionModal}
+        description={productDescription}
+        setDescription={setProductDescription}
       />
     </div>
   );

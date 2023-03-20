@@ -21,6 +21,7 @@ export const ProductCards = ({ isLoading, products, fetchProducts }: IProductCar
             refetchProductsCallBack={fetchProducts}
             type={product?.type}
             subtype={product?.subtype}
+            description={product?.description}
           />
         ))}
     </div>

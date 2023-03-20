@@ -28,7 +28,7 @@ export const CategoriesBar = () => {
         <div className="categories-bar-content">
           <div className="categories-button" onClick={categoriesModalToggler}>
             <MenuIcon />
-            All categories
+            Усі продукти
           </div>
           {/* <span className="category-button category-button-active">Home</span>
           <span className="category-button">Shop</span>

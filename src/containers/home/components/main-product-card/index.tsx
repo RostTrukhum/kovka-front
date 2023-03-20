@@ -68,7 +68,7 @@ export const MainProductCard = ({
       <div className="main-product-card-data-wrapper">
         <div className="main-product-card-info-wrapper">
           <span className="main-product-card-title">{title}</span>
-          <span className="main-product-card-price">{price}$</span>
+          <span className="main-product-card-price">{price} грн</span>
         </div>
         <div onClick={handleClickAddToCart} className={`main-product-card-cart-button-wrapper`}>
           {isAddToCartLoading ? (

@@ -76,27 +76,9 @@ export const ProductPage = () => {
             <div className="product-page-content-description">
               <div className="product-page-title">{product?.title}</div>
               <div className="product-page-description">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, obcaecati
-                  accusamus quam nemo neque, ipsum nulla quibusdam harum molestiae tenetur commodi
-                  sed in est! Veniam odit illo sunt error quasi. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Placeat corporis architecto veniam autem mollitia
-                  quasi earum soluta animi! Necessitatibus, dolore praesentium? Consectetur quisquam
-                  doloremque autem totam temporibus consequatur corporis accusantium! Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. In corporis, soluta cumque nisi vero
-                  ipsa ab provident itaque excepturi sint odit maiores natus beatae non minus
-                  doloremque distinctio at amet? Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Magni reiciendis error, corrupti laborum perferendis ex. Hic totam commodi
-                  dolor beatae tempore harum error incidunt, dicta aliquam maxime, ex aperiam odit.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore est consequatur,
-                  delectus itaque enim culpa fugiat, dolorum quasi repellat officia minima sunt
-                  perspiciatis obcaecati, consectetur sint odit totam nemo? Vel? Lorem ipsum dolor
-                  sit, amet consectetur adipisicing elit. Odit ut assumenda ad earum. Nam, quae ad.
-                  Adipisci in assumenda inventore necessitatibus non. Eius placeat tempora
-                  perspiciatis a suscipit animi maxime!
-                </p>
+                <p>{product?.description}</p>
               </div>
-              <span className="product-page-price">{product?.price}$</span>
+              <span className="product-page-price">{product?.price} грн</span>
               <ProductCounter
                 handleMinus={handleMinus}
                 handlePlus={handlePlus}
