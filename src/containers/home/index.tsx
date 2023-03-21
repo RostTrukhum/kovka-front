@@ -1,3 +1,4 @@
+import { Footer } from '../../components/footer';
 import { MainHeader } from '../../components/main-header';
 import { MainCarousel } from './components/main-carousel';
 import { MainProductCardList } from './components/main-product-cards-list';
@@ -11,6 +12,7 @@ export const Home = () => {
         <MainCarousel />
         <MainProductCardList />
       </div>
+      <Footer />
     </>
   );
 };

@@ -9,8 +9,10 @@ export const MainCarousel = () => {
     <div className="main-carousel-wrapper">
       <Carousel
         className="main-carousel-content"
-        showArrows={false}
+        showArrows={true}
         showStatus={false}
+        autoPlay={true}
+        infiniteLoop={true}
         preventMovementUntilSwipeScrollTolerance={true}
         swipeScrollTolerance={50}
       >

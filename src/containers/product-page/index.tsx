@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
+import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { getProductById } from '../../services/admin-panel-service/admin-panel.service';
@@ -16,6 +17,7 @@ export const ProductPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { cart, setCart, setIsLoading: setIsLoadingCart } = useContext(CartContext);
+  const [descriptionHeight, setDescriptionHeight] = useState(100);
 
   const { productId } = useParams<{ productId: string }>();
 
@@ -63,6 +65,10 @@ export const ProductPage = () => {
     }
   }, [productId]);
 
+  useEffect(() => {
+    setDescriptionHeight(document.querySelector('.product-page-description')?.scrollHeight!);
+  }, [product?.description]);
+
   return (
     <>
       <MainHeader />
@@ -75,9 +81,12 @@ export const ProductPage = () => {
             </div>
             <div className="product-page-content-description">
               <div className="product-page-title">{product?.title}</div>
-              <div className="product-page-description">
-                <p>{product?.description}</p>
-              </div>
+              <textarea
+                style={{ height: descriptionHeight }}
+                disabled={true}
+                value={product?.description}
+                className="product-page-description"
+              />
               <span className="product-page-price">{product?.price} грн</span>
               <ProductCounter
                 handleMinus={handleMinus}
@@ -95,6 +104,7 @@ export const ProductPage = () => {
           </>
         )}
       </div>
+      <Footer />
     </>
   );
 };

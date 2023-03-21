@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: center;
 	padding-top: 180px;
+	width: 100%;
 }
 
 .product-page-photo-wrapper {
@@ -17,7 +18,10 @@
 	font-family: 'Roboto';
 	font-weight: 400;
 	font-size: 14px;
+	border: none;
+	resize: none;
 	color: #586A84;
+	background-color: white;
 	margin-top: 30px;
 	min-height: 222px;
 }
@@ -52,7 +56,9 @@
 }
 
 .product-page-content-description {
-	max-width: 427px;
+	display: flex;
+	flex-direction: column;
+	width: 40%
 }
 
 .product-page-price {

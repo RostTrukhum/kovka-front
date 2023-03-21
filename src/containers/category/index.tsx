@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
+import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { FETCH_PRODUCT_LIMIT } from '../../constants';
@@ -92,6 +93,7 @@ export const Category = () => {
           />
         )}
       </div>
+      <Footer />
     </div>
   );
 };

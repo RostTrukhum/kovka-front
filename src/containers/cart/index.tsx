@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { CallBackModal } from '../../components/call-back-modal';
+import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { CartProduct } from './components/cart-product/cart-product';
