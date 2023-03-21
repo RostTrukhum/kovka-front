@@ -39,6 +39,7 @@ export const ProductPage = () => {
       setIsLoadingCart(true);
       const cart = await createCart({
         productId,
+        productCount,
       });
       cart && setCart(cart);
       setIsLoadingCart(false);
