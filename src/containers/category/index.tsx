@@ -20,14 +20,16 @@ export const Category = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [skip, setSkip] = useState(0);
 
-  const activeTitle = productTypes
-    .find(productType => productType.type === type)
-    ?.subtypes.find(productSubtype => productSubtype.subtype === subtype)?.title;
+  const activeTitle =
+    productTypes
+      .find(productType => productType.type === type)
+      ?.subtypes.find(productSubtype => productSubtype.subtype === subtype)?.title ||
+    productTypes.find(productType => productType.type === type)?.title;
 
   const fetchProducts = async () => {
     setIsLoading(true);
     const products = await getProducts({
-      filter: { type, subtype, limit: FETCH_PRODUCT_LIMIT, skip: 0 },
+      filter: { type, ...(subtype !== 'all' && { subtype }), limit: FETCH_PRODUCT_LIMIT, skip: 0 },
     });
     setSkip(FETCH_PRODUCT_LIMIT);
     products && setProducts(products.products);
@@ -42,7 +44,7 @@ export const Category = () => {
 
     setIsLoadingMore(true);
     const newProducts = await getProducts({
-      filter: { type, subtype, limit: FETCH_PRODUCT_LIMIT, skip },
+      filter: { type, ...(subtype !== 'all' && { subtype }), limit: FETCH_PRODUCT_LIMIT, skip },
     });
     products && newProducts && setProducts([...products, ...newProducts?.products]);
     setSkip(skip + FETCH_PRODUCT_LIMIT);

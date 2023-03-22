@@ -55,6 +55,15 @@ export const CategoriesModal = ({ isVisible, onClose }: ICategoriesModalProps) =
               height={10}
             />
           </div>
+          {handleShowSubcategoriesList(title) && (
+            <li
+              key={_id}
+              onClick={handleNavigateCategory(type, 'all')}
+              className="categories-modal-category-list-item"
+            >
+              Усі продукти
+            </li>
+          )}
 
           {handleShowSubcategoriesList(title) &&
             subtypes.map(({ title, _id, subtype }) => (
