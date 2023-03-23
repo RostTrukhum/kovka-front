@@ -6,6 +6,7 @@ import {
   deleteProductCart,
   updateCartProductCount,
 } from '../../../../services/cart-service/cart.service';
+import { calculateForegroundPrice } from '../../../../utils';
 import { ProductCounter } from '../../../product-page/components/product-counter';
 import { SCREENS } from '../../../router/constants';
 import { CartContext } from '../../context';
@@ -22,6 +23,8 @@ export const CartProduct = ({
   img,
   count,
   cartId,
+  height,
+  width,
 }: ICartProductProps) => {
   const [countOfProduct, setCountOfProduct] = useState(count);
   const [isChangingCartProductCount, setIsChanginCartProductCount] = useState(false);
@@ -37,6 +40,8 @@ export const CartProduct = ({
       cartProductId: id,
       productCount: countOfProduct + 1,
       cartId,
+      productHeight: height,
+      productWidth: width,
     });
     updatedCart && setCart(updatedCart);
     setCountOfProduct(prev => prev + 1);
@@ -50,6 +55,8 @@ export const CartProduct = ({
       cartProductId: id,
       productCount: countOfProduct - 1,
       cartId,
+      productWidth: width,
+      productHeight: height,
     });
     updatedCart && setCart(updatedCart);
     setCountOfProduct(prev => prev - 1);
@@ -72,9 +79,13 @@ export const CartProduct = ({
       <img onClick={handleNavigateToProduct} className="cart-product-img" src={img} />
       <div className="cart-product-text-content-wrapper">
         <div className="cart-product-title-wrapper">
-          <h2 onClick={handleNavigateToProduct} className="cart-product-title">
-            {title}
-          </h2>
+          <div className="cart-product-title-subwrapper">
+            <h2 onClick={handleNavigateToProduct} className="cart-product-title">
+              {title}
+            </h2>
+            <span className="cart-products-measures">Ширина: {width} мм</span>
+            <span className="cart-products-measures">Висота: {height} мм</span>
+          </div>
           <TrashIcon
             onClick={handleDeleteProduct}
             className="cart-trash-wrapper"
@@ -90,7 +101,11 @@ export const CartProduct = ({
             handlePlus={handlePlus}
             isLoading={isChangingCartProductCount}
           />
-          {<h3 className="cart-product-price">{price * countOfProduct} грн</h3>}
+          {
+            <h3 className="cart-product-price">
+              {calculateForegroundPrice({ price, width, height }) * countOfProduct} грн
+            </h3>
+          }
         </div>
       </div>
     </div>

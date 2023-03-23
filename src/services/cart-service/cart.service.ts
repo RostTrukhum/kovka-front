@@ -29,13 +29,20 @@ export const getCart = async ({ cartId }: IGetCartVariables) => {
   }
 };
 
-export const createCart = async ({ productId, productCount }: ICreateCartVariables) => {
+export const createCart = async ({
+  productId,
+  productCount,
+  productHeight,
+  productWidth,
+}: ICreateCartVariables) => {
   try {
     const cart = await axios.post<ICreateCartVariables, ICreateCartResponce>(
       `${BACKEND_URL}/createCart`,
       {
         productId,
         productCount,
+        productHeight,
+        productWidth,
       },
     );
 
@@ -61,7 +68,13 @@ export const deleteCart = async ({ cartId }: IDeleteCartVariables) => {
   }
 };
 
-export const addToCart = async ({ cartId, productCount, productId }: IAddToCartVariables) => {
+export const addToCart = async ({
+  cartId,
+  productCount,
+  productId,
+  productHeight,
+  productWidth,
+}: IAddToCartVariables) => {
   try {
     const updatedCart = await axios.post<IAddToCartVariables, ICreateCartResponce>(
       `${BACKEND_URL}/addToCart`,
@@ -69,6 +82,8 @@ export const addToCart = async ({ cartId, productCount, productId }: IAddToCartV
         cartId,
         productCount,
         productId,
+        productHeight,
+        productWidth,
       },
     );
 
@@ -102,6 +117,8 @@ export const updateCartProductCount = async ({
   cartId,
   cartProductId,
   productCount,
+  productHeight,
+  productWidth,
 }: IUpdateCartProductCountVariables) => {
   try {
     const updatedCart = await axios.post<IUpdateCartProductCountVariables, ICreateCartResponce>(
@@ -110,6 +127,8 @@ export const updateCartProductCount = async ({
         cartId,
         cartProductId,
         productCount,
+        productHeight,
+        productWidth,
       },
     );
 

@@ -62,7 +62,7 @@ export const Category = () => {
     <div>
       <MainHeader />
       <div className="main-category-wrapper">
-        <h2 className="category-title">{activeTitle}</h2>
+        <h1 className="category-title">{activeTitle}</h1>
         <ClipLoader color={'#029FAE'} loading={Boolean(isLoading)} size={100} />
         <div className="category-list-wrapper">
           {Boolean(products) &&

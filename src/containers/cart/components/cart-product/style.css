@@ -35,6 +35,12 @@
 	justify-content: space-between;
 }
 
+.cart-product-title-subwrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
 .cart-product-title {
 	font-family: "Inter";
 	font-size: 20px;
@@ -47,6 +53,13 @@
 	white-space: nowrap;
 	cursor: pointer;
 	transition: all 0.5s;
+}
+
+.cart-products-measures {
+	font-family: "Inter";
+    font-size: 14px;
+    font-weight: 500;
+    color: #535457;
 }
 
 .cart-product-title:hover {
@@ -64,7 +77,7 @@
 .cart-product-price-wrapper { 
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
 	width: 100%;
 	flex-wrap: wrap;
 }

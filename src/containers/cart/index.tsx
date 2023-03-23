@@ -4,6 +4,7 @@ import { CallBackModal } from '../../components/call-back-modal';
 import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
+import { calculateForegroundPrice } from '../../utils';
 import { CartProduct } from './components/cart-product/cart-product';
 import { CartContext } from './context';
 
@@ -16,7 +17,13 @@ export const Cart = () => {
   let cartPrice = 0;
 
   cart.products.forEach(product => {
-    cartPrice += product.count * product.product.price;
+    cartPrice +=
+      product.count *
+      calculateForegroundPrice({
+        price: product.product.price,
+        width: product.width,
+        height: product.height,
+      });
   });
 
   const handleOpenModal = () => {
@@ -49,6 +56,8 @@ export const Cart = () => {
               productId={product?.product?._id}
               count={product?.count}
               cartId={cart?._id}
+              height={product?.height}
+              width={product?.width}
             />
           ))}
           <CallBackModal

@@ -9,7 +9,7 @@ export const Home = () => {
     <>
       <MainHeader />
       <div className="home-content-wrapper">
-        <MainCarousel />
+        {/* <MainCarousel /> */}
         <MainProductCardList />
       </div>
       <Footer />

@@ -8,4 +8,6 @@ export interface ICartProductProps {
   productId: string;
   count: number;
   cartId: string;
+  width: number;
+  height: number;
 }

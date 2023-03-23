@@ -62,7 +62,7 @@ export const MainProductCardList = () => {
 
   return (
     <div className="main-product-cards-list-wrapper">
-      <span className="main-product-cards-list-title">Наші Продукти</span>
+      <h1 className="main-product-cards-list-title">Каталог</h1>
       <MainProductsTabs activeTab={activeTab} handleActiveTab={handleActiveProductType} />
       <ClipLoader color={'#029FAE'} loading={Boolean(isLoading)} size={100} />
       <div className="main-product-cards-list">

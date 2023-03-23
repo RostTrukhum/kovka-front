@@ -15,6 +15,8 @@ export interface ICartProduct {
     createdAt: Date;
   };
   count: number;
+  width: number;
+  height: number;
   _id: string;
 }
 
@@ -29,6 +31,8 @@ export interface IDeleteCartVariables {
 export interface ICreateCartVariables {
   productId: string;
   productCount?: number;
+  productWidth: number;
+  productHeight: number;
 }
 
 export interface ICreateCartResponce {
@@ -42,6 +46,8 @@ export interface IAddToCartVariables {
   cartId: string;
   productCount?: number;
   productId: string;
+  productWidth: number;
+  productHeight: number;
 }
 
 export interface IDeleteProductCartVariables {
@@ -53,4 +59,6 @@ export interface IUpdateCartProductCountVariables {
   cartId: string;
   cartProductId: string;
   productCount: number;
+  productWidth: number;
+  productHeight: number;
 }

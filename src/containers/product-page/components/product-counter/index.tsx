@@ -25,15 +25,18 @@ export const ProductCounter = ({
   };
 
   return (
-    <div className={`product-counter-wrapper ${customWrapperClass}`}>
-      <div onClick={handleCountMinus} className="product-counter-sign">
-        —
-      </div>
-      <div className="product-counter-number">
-        {isLoading ? <ClipLoader size={15} loading={isLoading} /> : count}
-      </div>
-      <div onClick={handleCountPlus} className="product-counter-sign">
-        +
+    <div className="main-product-counter-wrapper">
+      <span className="product-counter-title">Кількість</span>
+      <div className={`product-counter-wrapper ${customWrapperClass}`}>
+        <div onClick={handleCountMinus} className="product-counter-sign">
+          —
+        </div>
+        <div className="product-counter-number">
+          {isLoading ? <ClipLoader size={15} loading={isLoading} /> : count}
+        </div>
+        <div onClick={handleCountPlus} className="product-counter-sign">
+          +
+        </div>
       </div>
     </div>
   );

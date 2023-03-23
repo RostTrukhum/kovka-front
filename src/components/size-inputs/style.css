@@ -1,0 +1,32 @@
+.size-inputs-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	align-items: center;
+	margin-top: 10px
+}
+
+.size-input-wrapper {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+}
+
+.size-input {
+	border-radius: 5px;
+    border: 1px solid #EEF0F4;
+    height: 40px;
+    display: flex;
+	text-align: center;
+    align-items: center;
+    padding: 5px 8px 5px 8px;
+    max-width: 133px;
+	font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;
+    color: #1D232C;
+}
+
+.size-input:focus {
+	outline: none;
+}

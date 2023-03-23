@@ -12,7 +12,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 85%;
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .categories-bar-content {
@@ -23,8 +25,7 @@
 
 .categories-button {
 	display: flex;
-	align-items: center;
-	height: 47px;
+	height: 53.5px;
 	gap: 16px;
 	background: #FFFFFF;
 	border: 1px solid #E1E3E6;
@@ -40,9 +41,7 @@
 
 @media (max-width: 440px) {
 	.categories-button {
-		font-size: 0;
 		min-width: 0;
-		gap: 0;
 		padding-left: 15px;
 		padding-right: 15px;
 	}
