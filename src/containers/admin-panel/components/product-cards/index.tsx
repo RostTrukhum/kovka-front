@@ -22,6 +22,8 @@ export const ProductCards = ({ isLoading, products, fetchProducts }: IProductCar
             type={product?.type}
             subtype={product?.subtype}
             description={product?.description}
+            height={product?.height}
+            width={product?.width}
           />
         ))}
     </div>

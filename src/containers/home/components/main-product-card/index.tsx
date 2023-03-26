@@ -9,6 +9,7 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../../../cart/context';
 import { ClipLoader } from 'react-spinners';
 import { PRODUCT_TYPES } from '../../../../types';
+import { calculateForegroundPrice } from '../../../../utils';
 
 export const MainProductCard = ({
   img,
@@ -17,6 +18,8 @@ export const MainProductCard = ({
   id,
   type,
   subtype,
+  height,
+  width,
 }: IMainProductCardProps) => {
   const [isAddToCartLoading, setIsAddToCartLoading] = useState(false);
 
@@ -70,7 +73,8 @@ export const MainProductCard = ({
         <div className="main-product-card-info-wrapper">
           <span className="main-product-card-title">{title}</span>
           <span className="main-product-card-price">
-            {price} грн{type === PRODUCT_TYPES.FORGED_PRODUCTS && '/м²'}
+            {calculateForegroundPrice({ price: price, height, width })} грн
+            {type === PRODUCT_TYPES.FORGED_PRODUCTS && '/м²'}
           </span>
         </div>
         {/* <div onClick={handleClickAddToCart} className={`main-product-card-cart-button-wrapper`}>

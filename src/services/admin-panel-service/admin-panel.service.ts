@@ -71,6 +71,8 @@ export const updateProduct = async ({
   type,
   subtype,
   description,
+  width,
+  height,
 }: IUpdateProductVariables) => {
   try {
     await axios.post<IUpdateProductVariables>(`${BACKEND_URL}/updateProduct`, {
@@ -81,6 +83,8 @@ export const updateProduct = async ({
       type,
       subtype,
       description,
+      width,
+      height,
     });
   } catch (e) {
     console.log(e);
@@ -104,6 +108,8 @@ export const createProduct = async ({
   type,
   subtype,
   description,
+  width,
+  height,
 }: ICreateProductVariables) => {
   try {
     await axios.post(`${BACKEND_URL}/createProduct`, {
@@ -113,6 +119,8 @@ export const createProduct = async ({
       type,
       subtype,
       description,
+      width,
+      height,
     });
   } catch (e) {
     console.log(e);

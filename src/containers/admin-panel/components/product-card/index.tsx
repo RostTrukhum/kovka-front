@@ -27,6 +27,8 @@ export const ProductCard = ({
   type,
   subtype,
   description,
+  height,
+  width,
 }: IProductCardProps) => {
   const [productTitle, setProductTitle] = useState(title);
   const [productPrice, setProductPrice] = useState(price);
@@ -37,6 +39,8 @@ export const ProductCard = ({
   const [productSubtype, setProductSubtype] = useState(
     subtype || productTypes[0].subtypes[0].subtype,
   );
+  const [productWidth, setProductWidth] = useState(width);
+  const [productHeight, setProductHeight] = useState(height);
   const [isProductModalVisible, setIsProductModalVisible] = useState(false);
   const [productDescription, setProductDescription] = useState(description);
 
@@ -72,6 +76,8 @@ export const ProductCard = ({
       !productPrice ||
       !productImage ||
       !productDescription ||
+      !productWidth ||
+      !productHeight ||
       isReloadingProducts ||
       productImage === UploadPhotoBanner
     ) {
@@ -84,7 +90,9 @@ export const ProductCard = ({
       productImage !== img ||
       productType !== type ||
       productDescription !== description ||
-      productSubtype !== subtype
+      productSubtype !== subtype ||
+      productWidth !== width ||
+      productHeight !== height
     ) {
       return true;
     }
@@ -102,6 +110,8 @@ export const ProductCard = ({
           type: productType,
           subtype: productSubtype,
           description: productDescription,
+          width: productWidth,
+          height: productHeight,
         });
         refetchProductsCallBack && (await refetchProductsCallBack(true));
         onCloseModal && onCloseModal();
@@ -118,6 +128,8 @@ export const ProductCard = ({
           subtype: productSubtype,
           description: productDescription,
           id,
+          width: productWidth,
+          height: productHeight,
         });
         refetchProductsCallBack && (await refetchProductsCallBack(true));
         setIsReloadingProducts(false);
@@ -131,6 +143,22 @@ export const ProductCard = ({
     const isAvalible = reg.test(e.target.value) || !e.target.value;
 
     isAvalible && setProductPrice(Number(e.target.value));
+  };
+
+  const handleChangeWidth = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const reg = new RegExp(/^\d+$/);
+
+    const isAvalible = reg.test(e.target.value) || !e.target.value;
+
+    isAvalible && setProductWidth(Number(e.target.value));
+  };
+
+  const handleChangeHeight = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const reg = new RegExp(/^\d+$/);
+
+    const isAvalible = reg.test(e.target.value) || !e.target.value;
+
+    isAvalible && setProductHeight(Number(e.target.value));
   };
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -182,6 +210,26 @@ export const ProductCard = ({
           className="product-card-input"
         />
         <span className="product-card-title">грн</span>
+      </div>
+      <div className="product-card-input-wrapper ">
+        <span className="product-card-title">Ширина:</span>
+        <input
+          onChange={handleChangeWidth}
+          value={`${productWidth}`}
+          placeholder={'Ширина'}
+          className="product-card-input"
+        />
+        <span className="product-card-title">мм</span>
+      </div>
+      <div className="product-card-input-wrapper ">
+        <span className="product-card-title">Висота:</span>
+        <input
+          onChange={handleChangeHeight}
+          value={`${productHeight}`}
+          placeholder={'Висота'}
+          className="product-card-input"
+        />
+        <span className="product-card-title">мм</span>
       </div>
       <div className="product-card-input-wrapper ">
         <span className="product-card-title">тип:</span>

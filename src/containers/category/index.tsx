@@ -75,6 +75,8 @@ export const Category = () => {
                 id={product._id}
                 type={product?.type}
                 subtype={product?.subtype}
+                width={product?.width}
+                height={product?.height}
               />
             ))}
           {Boolean(!products?.length && !isLoading) && (

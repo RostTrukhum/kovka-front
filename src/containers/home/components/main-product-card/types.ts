@@ -5,4 +5,6 @@ export interface IMainProductCardProps {
   id: string;
   type: string;
   subtype: string;
+  width: number;
+  height: number;
 }

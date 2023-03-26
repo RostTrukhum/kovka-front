@@ -20,6 +20,8 @@ export interface IProduct {
   subtype: string;
   createdAt: Date;
   description: string;
+  height: number;
+  width: number;
 }
 
 export interface IGetProductsResponce {
@@ -41,6 +43,8 @@ export interface IUpdateProductVariables {
   type: string;
   subtype: string;
   description: string;
+  width: number;
+  height: number;
 }
 
 export interface UploadProductImage {
@@ -54,6 +58,8 @@ export interface ICreateProductVariables {
   type: string;
   subtype: string;
   description: string;
+  width: number;
+  height: number;
 }
 
 export interface IDeleteProductVariables {

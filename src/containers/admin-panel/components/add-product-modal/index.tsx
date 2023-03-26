@@ -18,6 +18,8 @@ export const AddProductModal = ({ isVisible, onClose, refetchProducts }: IAddPro
         type=""
         subtype=""
         description=""
+        height={1000}
+        width={1000}
       />
     </Modal>
   );

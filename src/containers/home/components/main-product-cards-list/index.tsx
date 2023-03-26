@@ -76,6 +76,8 @@ export const MainProductCardList = () => {
               id={product._id}
               type={product?.type}
               subtype={product?.subtype}
+              height={product?.height}
+              width={product?.width}
             />
           ))}
         {Boolean(!products?.length && !isLoading) && (

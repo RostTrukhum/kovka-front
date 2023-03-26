@@ -10,4 +10,6 @@ export interface IProductCardProps {
   type: string;
   subtype: string;
   description: string;
+  height: number;
+  width: number;
 }

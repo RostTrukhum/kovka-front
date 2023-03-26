@@ -4,6 +4,7 @@ import { CallBackModal } from '../../components/call-back-modal';
 import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
+import { PRODUCT_TYPES } from '../../types';
 import { calculateForegroundPrice } from '../../utils';
 import { CartProduct } from './components/cart-product/cart-product';
 import { CartContext } from './context';
@@ -17,13 +18,21 @@ export const Cart = () => {
   let cartPrice = 0;
 
   cart.products.forEach(product => {
-    cartPrice +=
-      product.count *
+    const productPrice =
       calculateForegroundPrice({
-        price: product.product.price,
-        width: product.width,
-        height: product.height,
-      });
+        price: product?.product?.price,
+        height: product?.height,
+        width: product?.width,
+      }) * product.count;
+
+    const updatedPrice =
+      (product?.height !== product?.product?.height ||
+        product?.width !== product?.product?.width) &&
+      product?.product?.type === PRODUCT_TYPES.DOORS
+        ? Math.ceil(productPrice * 0.99)
+        : productPrice;
+
+    cartPrice += updatedPrice;
   });
 
   const handleOpenModal = () => {
@@ -56,8 +65,10 @@ export const Cart = () => {
               productId={product?.product?._id}
               count={product?.count}
               cartId={cart?._id}
-              height={product?.height}
-              width={product?.width}
+              cartHeight={product?.height}
+              cartWidth={product?.width}
+              productHeight={product?.product?.height}
+              productWidth={product?.product?.width}
             />
           ))}
           <CallBackModal

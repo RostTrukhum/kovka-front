@@ -13,6 +13,8 @@ export interface ICartProduct {
     type: string;
     subtype: string;
     createdAt: Date;
+    width: number;
+    height: number;
   };
   count: number;
   width: number;

@@ -6,6 +6,7 @@ import {
   deleteProductCart,
   updateCartProductCount,
 } from '../../../../services/cart-service/cart.service';
+import { PRODUCT_TYPES } from '../../../../types';
 import { calculateForegroundPrice } from '../../../../utils';
 import { ProductCounter } from '../../../product-page/components/product-counter';
 import { SCREENS } from '../../../router/constants';
@@ -23,8 +24,10 @@ export const CartProduct = ({
   img,
   count,
   cartId,
-  height,
-  width,
+  cartHeight,
+  cartWidth,
+  productHeight,
+  productWidth,
 }: ICartProductProps) => {
   const [countOfProduct, setCountOfProduct] = useState(count);
   const [isChangingCartProductCount, setIsChanginCartProductCount] = useState(false);
@@ -40,8 +43,8 @@ export const CartProduct = ({
       cartProductId: id,
       productCount: countOfProduct + 1,
       cartId,
-      productHeight: height,
-      productWidth: width,
+      productHeight: cartHeight,
+      productWidth: cartWidth,
     });
     updatedCart && setCart(updatedCart);
     setCountOfProduct(prev => prev + 1);
@@ -55,8 +58,8 @@ export const CartProduct = ({
       cartProductId: id,
       productCount: countOfProduct - 1,
       cartId,
-      productWidth: width,
-      productHeight: height,
+      productHeight: cartHeight,
+      productWidth: cartWidth,
     });
     updatedCart && setCart(updatedCart);
     setCountOfProduct(prev => prev - 1);
@@ -74,6 +77,15 @@ export const CartProduct = ({
     navigate(`${SCREENS.PRODUCT_PAGE}/${productId}`);
   };
 
+  const productPrice =
+    calculateForegroundPrice({ price: price, height: cartHeight, width: cartWidth }) *
+    countOfProduct;
+
+  const updatedPrice =
+    (productHeight !== cartHeight || productWidth !== cartWidth) && type === PRODUCT_TYPES.DOORS
+      ? Math.ceil(productPrice * 0.99)
+      : productPrice;
+
   return (
     <div className={`cart-product-wrapper ${isProductLoading && 'cart-product-loading-wrapper'}`}>
       <img onClick={handleNavigateToProduct} className="cart-product-img" src={img} />
@@ -83,8 +95,8 @@ export const CartProduct = ({
             <h2 onClick={handleNavigateToProduct} className="cart-product-title">
               {title}
             </h2>
-            <span className="cart-products-measures">Ширина: {width} мм</span>
-            <span className="cart-products-measures">Висота: {height} мм</span>
+            <span className="cart-products-measures">Ширина: {cartWidth} мм</span>
+            <span className="cart-products-measures">Висота: {cartHeight} мм</span>
           </div>
           <TrashIcon
             onClick={handleDeleteProduct}
@@ -101,11 +113,7 @@ export const CartProduct = ({
             handlePlus={handlePlus}
             isLoading={isChangingCartProductCount}
           />
-          {
-            <h3 className="cart-product-price">
-              {calculateForegroundPrice({ price, width, height }) * countOfProduct} грн
-            </h3>
-          }
+          {<h3 className="cart-product-price">{updatedPrice} грн</h3>}
         </div>
       </div>
     </div>

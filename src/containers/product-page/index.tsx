@@ -8,6 +8,7 @@ import { SizeInputs } from '../../components/size-inputs';
 import { getProductById } from '../../services/admin-panel-service/admin-panel.service';
 import { IProduct } from '../../services/admin-panel-service/types';
 import { addToCart, createCart } from '../../services/cart-service/cart.service';
+import { PRODUCT_TYPES } from '../../types';
 import { calculateForegroundPrice } from '../../utils';
 import { CartContext } from '../cart/context';
 import { ProductCounter } from './components/product-counter';
@@ -20,8 +21,8 @@ export const ProductPage = () => {
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { cart, setCart, setIsLoading: setIsLoadingCart } = useContext(CartContext);
   const [descriptionHeight, setDescriptionHeight] = useState(100);
-  const [width, setWidth] = useState(1000);
-  const [height, setHeight] = useState(1000);
+  const [width, setWidth] = useState(product?.width || 1000);
+  const [height, setHeight] = useState(product?.height || 1000);
 
   const { productId } = useParams<{ productId: string }>();
 
@@ -83,12 +84,23 @@ export const ProductPage = () => {
     isAvalible && setHeight(Number(e.target.value));
   };
 
+  const productPrice =
+    calculateForegroundPrice({ price: product?.price!, height, width }) * productCount;
+
+  const updatedPrice =
+    (width !== product?.width || height !== product?.height) &&
+    product?.type === PRODUCT_TYPES.DOORS
+      ? Math.ceil(productPrice * 0.99)
+      : productPrice;
+
   useEffect(() => {
     if (productId) {
       (async () => {
         setIsLoading(true);
         const product = await getProductById({ id: productId });
         setProduct(product);
+        setWidth(product?.width!);
+        setHeight(product?.height!);
         setIsLoading(false);
       })();
     }
@@ -135,7 +147,8 @@ export const ProductPage = () => {
                 isLoading={isAddingToCart}
               />
               <span className="product-page-price">
-                {calculateForegroundPrice({ price: product?.price!, height, width })} грн
+                {updatedPrice}
+                грн
               </span>
             </div>
           </>

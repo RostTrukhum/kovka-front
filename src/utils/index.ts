@@ -8,5 +8,5 @@ export const calculateForegroundPrice = ({
   const widthInMeters = width / 1000;
   const heightInMeters = height / 1000;
 
-  return widthInMeters * heightInMeters * price;
+  return Math.ceil(widthInMeters * heightInMeters * price);
 };
