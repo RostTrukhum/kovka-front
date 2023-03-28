@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { CallBackModal } from '../../components/call-back-modal';
-import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { PRODUCT_TYPES } from '../../types';
@@ -53,30 +52,34 @@ export const Cart = () => {
           {!cart?.products.length && !isLoading && (
             <h2 className="empty-cart-title">Ваш кошик пустий</h2>
           )}
-          {cart?.products?.map(product => (
-            <CartProduct
-              key={product._id}
-              id={product._id}
-              title={product?.product?.title}
-              price={product?.product?.price}
-              img={product?.product?.img}
-              type={product?.product?.type}
-              subtype={product?.product?.subtype}
-              productId={product?.product?._id}
-              count={product?.count}
-              cartId={cart?._id}
-              cartHeight={product?.height}
-              cartWidth={product?.width}
-              productHeight={product?.product?.height}
-              productWidth={product?.product?.width}
-            />
-          ))}
-          <CallBackModal
-            cartPrice={cartPrice}
-            products={cart?.products}
-            isVisible={isModalVisible}
-            onClose={handleCloseModal}
-          />
+          {!isLoading && (
+            <>
+              {cart?.products?.map(product => (
+                <CartProduct
+                  key={product._id}
+                  id={product._id}
+                  title={product?.product?.title}
+                  price={product?.product?.price}
+                  img={product?.product?.img}
+                  type={product?.product?.type}
+                  subtype={product?.product?.subtype}
+                  productId={product?.product?._id}
+                  count={product?.count}
+                  cartId={cart?._id}
+                  cartHeight={product?.height}
+                  cartWidth={product?.width}
+                  productHeight={product?.product?.height}
+                  productWidth={product?.product?.width}
+                />
+              ))}
+              <CallBackModal
+                cartPrice={cartPrice}
+                products={cart?.products}
+                isVisible={isModalVisible}
+                onClose={handleCloseModal}
+              />
+            </>
+          )}
         </div>
         {!isLoading && !!cart.products.length && (
           <div className="cart-make-order-wrapper">
