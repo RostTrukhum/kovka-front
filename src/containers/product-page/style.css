@@ -27,10 +27,11 @@
 	font-size: 14px;
 	border: none;
 	resize: none;
-	color: #1a1e22;
+	color: black;
 	background-color: white;
 	margin-top: 20px;
 	min-height: 222px;
+	opacity: 1;
 }
 
 @media (max-width: 933px) {
