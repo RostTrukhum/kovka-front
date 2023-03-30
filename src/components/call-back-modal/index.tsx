@@ -2,12 +2,14 @@ import { Modal } from '../modal';
 import { ICallBackModal } from './types';
 import { ReactComponent as CrossIcon } from '../../assets/icons/cross.svg';
 
-import './style.css';
 import { MainButton } from '../main-button';
 import { sendCallBack, sendCartCallBack } from '../../services/home-service/home.service';
 import { useContext, useEffect, useState } from 'react';
 import { deleteCart } from '../../services/cart-service/cart.service';
 import { CartContext } from '../../containers/cart/context';
+import InputMask from 'react-input-mask';
+
+import './style.css';
 
 export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICallBackModal) => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -15,9 +17,18 @@ export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICall
   const [isSendedCallBack, setIsSendedCallBack] = useState(false);
   const { cart, setCart } = useContext(CartContext);
 
+  const customClose = () => {
+    setPhoneNumber('');
+    onClose();
+  };
+
   const handleCartCallBack = async () => {
     if (products && cartPrice) {
-      await sendCartCallBack({ products, totalPrice: cartPrice, phoneNumber });
+      await sendCartCallBack({
+        products,
+        totalPrice: cartPrice,
+        phoneNumber: phoneNumber.replace(/[^0-9]+/g, ''),
+      });
       await deleteCart({ cartId: cart?._id });
       setCart({ _id: '', products: [] });
     }
@@ -25,7 +36,9 @@ export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICall
 
   const handleCallBack = async () => {
     setIsLoading(true);
-    products ? await handleCartCallBack() : await sendCallBack({ phoneNumber });
+    products
+      ? await handleCartCallBack()
+      : await sendCallBack({ phoneNumber: phoneNumber.replace(/[^0-9]+/g, '') });
     setIsSendedCallBack(true);
     setIsLoading(false);
   };
@@ -37,16 +50,16 @@ export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICall
   useEffect(() => {
     if (isSendedCallBack) {
       setTimeout(() => {
-        onClose();
+        customClose();
         setIsSendedCallBack(false);
       }, 4000);
     }
   }, [isSendedCallBack]);
 
   return (
-    <Modal isVisible={isVisible} onClose={onClose}>
+    <Modal isVisible={isVisible} onClose={customClose}>
       <div className="call-back-modal-wrapper">
-        <div onClick={onClose} className="call-back-cross-wrapper">
+        <div onClick={customClose} className="call-back-cross-wrapper">
           <CrossIcon />
         </div>
         <div className="call-back-modal-content-wrapper">
@@ -57,10 +70,12 @@ export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICall
           </span>
           {!isSendedCallBack && (
             <>
-              <input
+              <InputMask
                 onChange={handleChangePhoneNumber}
+                value={phoneNumber}
                 placeholder="Номер телефору"
                 className="call-back-modal-input"
+                mask={'+38 (999) 999 99 99'}
               />
               <MainButton
                 disabled={!phoneNumber || isLoading}
