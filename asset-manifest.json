@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/kovka-front/static/css/main.489066db.css",
-    "main.js": "/kovka-front/static/js/main.0bb21c73.js",
+    "main.css": "/kovka-front/static/css/main.86c03aa6.css",
+    "main.js": "/kovka-front/static/js/main.8beef572.js",
     "static/media/upload-photo-placeholder.jpg": "/kovka-front/static/media/upload-photo-placeholder.65c08d093ed42e5f9611.jpg",
     "static/media/quote.svg": "/kovka-front/static/media/quote.aca2bde851e2649b76074c66415688fe.svg",
-    "static/media/profile.svg": "/kovka-front/static/media/profile.aa184c196b064b29b306ad04dc253003.svg",
     "index.html": "/kovka-front/index.html",
     "static/media/pen.svg": "/kovka-front/static/media/pen.24ee477c8112f89e3c7e1ca298a640dc.svg",
     "static/media/plus-button.svg": "/kovka-front/static/media/plus-button.a670dfc4612bba0bd1b08bb5aa3f72ab.svg",
@@ -12,15 +11,14 @@
     "static/media/trash.svg": "/kovka-front/static/media/trash.4cfa926ffef7dd54e17ce553a3547b3b.svg",
     "static/media/empty-right-arrow.svg": "/kovka-front/static/media/empty-right-arrow.2b7c53f8ae436d1b7dec535f7d1b4ef6.svg",
     "static/media/phone.svg": "/kovka-front/static/media/phone.2607ec5322e6685f846e6abcb8ddb4eb.svg",
-    "static/media/heart.svg": "/kovka-front/static/media/heart.bfef2614f1938cb73e54198aa8812df8.svg",
     "static/media/empty-left-arrow.svg": "/kovka-front/static/media/empty-left-arrow.f544e204f5b32475aeb50cab639b9256.svg",
     "static/media/cross.svg": "/kovka-front/static/media/cross.90e54e388f35190992904a36fe7d907e.svg",
     "static/media/menu.svg": "/kovka-front/static/media/menu.2fa5e208f7add01c5df962d75aa099dc.svg",
-    "main.489066db.css.map": "/kovka-front/static/css/main.489066db.css.map",
-    "main.0bb21c73.js.map": "/kovka-front/static/js/main.0bb21c73.js.map"
+    "main.86c03aa6.css.map": "/kovka-front/static/css/main.86c03aa6.css.map",
+    "main.8beef572.js.map": "/kovka-front/static/js/main.8beef572.js.map"
   },
   "entrypoints": [
-    "static/css/main.489066db.css",
-    "static/js/main.0bb21c73.js"
+    "static/css/main.86c03aa6.css",
+    "static/js/main.8beef572.js"
   ]
 }
