@@ -158,8 +158,6 @@ export const ProductPage = () => {
                   customWrapperClass="product-page-cart-button product-page-buy-button"
                   onClick={handleOpenProductBuyModal}
                   text="Замовити"
-                  disabled={isAddingToCart}
-                  isLoading={isAddingToCart}
                 />
                 <MainButton
                   customWrapperClass="product-page-cart-button"
