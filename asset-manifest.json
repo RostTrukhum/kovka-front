@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kovka-front/static/css/main.86c03aa6.css",
-    "main.js": "/kovka-front/static/js/main.8beef572.js",
+    "main.js": "/kovka-front/static/js/main.cd40af44.js",
     "static/media/upload-photo-placeholder.jpg": "/kovka-front/static/media/upload-photo-placeholder.65c08d093ed42e5f9611.jpg",
     "static/media/quote.svg": "/kovka-front/static/media/quote.aca2bde851e2649b76074c66415688fe.svg",
     "index.html": "/kovka-front/index.html",
@@ -15,10 +15,10 @@
     "static/media/cross.svg": "/kovka-front/static/media/cross.90e54e388f35190992904a36fe7d907e.svg",
     "static/media/menu.svg": "/kovka-front/static/media/menu.2fa5e208f7add01c5df962d75aa099dc.svg",
     "main.86c03aa6.css.map": "/kovka-front/static/css/main.86c03aa6.css.map",
-    "main.8beef572.js.map": "/kovka-front/static/js/main.8beef572.js.map"
+    "main.cd40af44.js.map": "/kovka-front/static/js/main.cd40af44.js.map"
   },
   "entrypoints": [
     "static/css/main.86c03aa6.css",
-    "static/js/main.8beef572.js"
+    "static/js/main.cd40af44.js"
   ]
 }
