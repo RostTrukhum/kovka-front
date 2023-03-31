@@ -46,12 +46,12 @@ export const Navbar = () => {
               <ClipLoader loading={isCartLoading} size={5} color="#ffff" />
             </div>
           </div>
-          <div className="search-button">
+          {/* <div className="search-button">
             <HeartIcon />
           </div>
           <div className="search-button">
             <ProfileIcon />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

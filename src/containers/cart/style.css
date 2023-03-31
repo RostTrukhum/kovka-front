@@ -42,6 +42,6 @@
 
 @media (max-width: 440px) {
 	.cart-make-order-wrapper {
-		flex-direction: column;
+		flex-direction: column-reverse;
 	}
 }

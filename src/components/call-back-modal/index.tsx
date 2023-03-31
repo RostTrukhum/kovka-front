@@ -66,7 +66,7 @@ export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICall
           <span className="call-back-modal-title">
             {isSendedCallBack
               ? "Наш менеджер зв'яжеться з вами у найближчий час"
-              : 'Зворотній дзвінок'}
+              : `${products ? 'Оформлення замовлення' : 'Зворотній дзвінок'}`}
           </span>
           {!isSendedCallBack && (
             <>
@@ -81,7 +81,7 @@ export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICall
                 disabled={!phoneNumber || isLoading}
                 isLoading={isLoading}
                 customWrapperClass="call-back-modal-button"
-                text="Зворотній дзвінок"
+                text={products ? 'Оформити замовлення' : 'Зворотній дзвінок'}
                 onClick={handleCallBack}
               />
             </>

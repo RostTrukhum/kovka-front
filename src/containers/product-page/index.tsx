@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
+import { CallBackModal } from '../../components/call-back-modal';
 import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
@@ -23,6 +24,15 @@ export const ProductPage = () => {
   const [descriptionHeight, setDescriptionHeight] = useState(100);
   const [width, setWidth] = useState(product?.width || 1000);
   const [height, setHeight] = useState(product?.height || 1000);
+  const [isBuyProductModalVisible, setIsBuyProductModalVisible] = useState(false);
+
+  const handleOpenProductBuyModal = () => {
+    setIsBuyProductModalVisible(true);
+  };
+
+  const handleCloseProductBuyModal = () => {
+    setIsBuyProductModalVisible(false);
+  };
 
   const { productId } = useParams<{ productId: string }>();
 
@@ -87,11 +97,11 @@ export const ProductPage = () => {
   const productPrice =
     calculateForegroundPrice({ price: product?.price!, height, width }) * productCount;
 
-  const updatedPrice =
+  const isOutSizedDoor =
     (width !== product?.width || height !== product?.height) &&
-    product?.type === PRODUCT_TYPES.DOORS
-      ? Math.ceil(productPrice * 0.99)
-      : productPrice;
+    product?.type === PRODUCT_TYPES.DOORS;
+
+  const updatedPrice = isOutSizedDoor ? Math.ceil(productPrice * 0.99) : productPrice;
 
   useEffect(() => {
     if (productId) {
@@ -139,22 +149,48 @@ export const ProductPage = () => {
                 handlePlus={handlePlus}
                 count={productCount}
               />
-              <MainButton
-                customWrapperClass="product-page-cart-button"
-                onClick={handleAddToCart}
-                text="Додати до кошика"
-                disabled={isAddingToCart}
-                isLoading={isAddingToCart}
-              />
               <span className="product-page-price">
                 {updatedPrice}
                 грн
               </span>
+              <div className="product-buy-buttons-wrapper">
+                <MainButton
+                  customWrapperClass="product-page-cart-button product-page-buy-button"
+                  onClick={handleOpenProductBuyModal}
+                  text="Замовити"
+                  disabled={isAddingToCart}
+                  isLoading={isAddingToCart}
+                />
+                <MainButton
+                  customWrapperClass="product-page-cart-button"
+                  onClick={handleAddToCart}
+                  text="Додати до кошика"
+                  disabled={isAddingToCart}
+                  isLoading={isAddingToCart}
+                />
+              </div>
             </div>
           </>
         )}
       </div>
       <Footer />
+      <CallBackModal
+        cartPrice={updatedPrice}
+        products={[
+          {
+            product: {
+              ...product!,
+              price: isOutSizedDoor ? product?.price! * 0.99 : product?.price!,
+            },
+            count: productCount,
+            width,
+            height,
+            _id: product?._id!,
+          },
+        ]}
+        isVisible={isBuyProductModalVisible}
+        onClose={handleCloseProductBuyModal}
+      />
     </div>
   );
 };

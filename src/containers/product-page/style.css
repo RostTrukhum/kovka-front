@@ -67,7 +67,20 @@
 .product-page-content-description {
 	display: flex;
 	flex-direction: column;
-	width: 80%
+	width: 40%
+
+}
+
+@media (max-width: 933px) {
+	.product-page-content-description {
+		width: 80%
+	}
+}
+
+.product-buy-buttons-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
 }
 
 .product-page-price {
@@ -79,4 +92,8 @@
 
 .product-page-cart-button {
 	margin-top: 20px
+}
+
+.product-page-buy-button {
+	background: green;
 }
