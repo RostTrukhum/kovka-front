@@ -11,7 +11,13 @@ import InputMask from 'react-input-mask';
 
 import './style.css';
 
-export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICallBackModal) => {
+export const CallBackModal = ({
+  isVisible,
+  onClose,
+  products,
+  cartPrice,
+  deletingCart = true,
+}: ICallBackModal) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSendedCallBack, setIsSendedCallBack] = useState(false);
@@ -29,8 +35,8 @@ export const CallBackModal = ({ isVisible, onClose, products, cartPrice }: ICall
         totalPrice: cartPrice,
         phoneNumber: phoneNumber.replace(/[^0-9]+/g, ''),
       });
-      await deleteCart({ cartId: cart?._id });
-      setCart({ _id: '', products: [] });
+      deletingCart && (await deleteCart({ cartId: cart?._id }));
+      deletingCart && setCart({ _id: '', products: [] });
     }
   };
 

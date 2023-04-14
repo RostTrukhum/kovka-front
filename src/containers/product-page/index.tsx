@@ -13,6 +13,7 @@ import { PRODUCT_TYPES } from '../../types';
 import { calculateForegroundPrice } from '../../utils';
 import { CartContext } from '../cart/context';
 import { ProductCounter } from './components/product-counter';
+import { ProductSpecificationTabs } from './components/product-specification-tabs';
 import './style.css';
 
 export const ProductPage = () => {
@@ -171,6 +172,8 @@ export const ProductPage = () => {
           </>
         )}
       </div>
+      <ProductSpecificationTabs />
+
       <Footer />
       <CallBackModal
         cartPrice={updatedPrice}
@@ -186,6 +189,7 @@ export const ProductPage = () => {
             _id: product?._id!,
           },
         ]}
+        deletingCart={false}
         isVisible={isBuyProductModalVisible}
         onClose={handleCloseProductBuyModal}
       />

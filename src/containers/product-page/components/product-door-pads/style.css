@@ -1,0 +1,36 @@
+.product-door-pads-main-wrapper {
+	display: flex;
+	justify-content: space-between;
+	gap: 30px;
+	width: 100%;
+}
+
+.product-door-pads-title {
+	margin: 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: 'Inter';
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.product-door-pads-wrapper {
+	width: 45%;
+}
+
+@media (max-width: 1085px) {
+	.product-door-pads-main-wrapper {
+		flex-direction: column;
+		align-self: center;
+	}
+
+	.product-door-pads-wrapper {
+		width: 100%;
+	}
+}
+
+.product-door-pads-content-wrapper {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}

@@ -1,0 +1,33 @@
+.product-page-tabs-wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	margin-top: 30px;
+}
+
+
+
+.product-page-small-tab-content {
+	display: none;
+	padding: 0px 20px 0px 20px;
+}
+
+.product-page-big-tab-content {
+	display: flex;
+	padding: 30px 20px 0px 20px;
+}
+
+@media (max-width: 600px) {
+	.product-page-tabs-wrapper {
+		flex-direction: column;
+	}
+
+	.product-page-small-tab-content {
+		display: flex;
+	}
+
+	.product-page-big-tab-content {
+		display: none;
+	}
+}
+

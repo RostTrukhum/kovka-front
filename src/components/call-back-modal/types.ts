@@ -5,4 +5,5 @@ export interface ICallBackModal {
   onClose: () => void;
   products?: ICartProduct[];
   cartPrice?: number;
+  deletingCart?: boolean;
 }

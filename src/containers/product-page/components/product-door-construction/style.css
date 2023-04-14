@@ -1,0 +1,82 @@
+.product-door-construction-image {
+	max-width: 330px;
+	height: 550px;
+}
+
+.product-door-construction-table-title {
+	text-align: start;
+}
+
+.product-door-construction-title {
+	line-height: 25px;
+	padding: 0px 20px 0px 20px;
+}
+
+.product-door-construction-content-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+@media (max-width: 1727px) {
+	.product-door-construction-content-wrapper {
+		justify-content: center;
+	}
+}
+
+.product-door-construction-tables-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.product-door-construction-table {
+	flex: 1;
+	height: fit-content;
+	min-width: 332px;
+	margin: 5px;
+}
+
+.product-door-construction-tbody {
+	flex: 1;
+}
+
+.product-door-construction-tr {
+	flex: 1;
+	height: 85px;
+}
+
+.product-door-construction-td {
+	width: 150px;
+    color: #000;
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid #e7e7e7;
+    padding: 9px 10px 11px 16px;
+    word-break: break-word;
+}
+
+.product-door-construction-td:nth-child(2n) {
+	width: 85px
+}
+
+.product-door-construction-td-text {
+	width: 70%;
+}
+
+.product-door-construction-td-content-wrapper {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.product-door-construction-number-label-wrapper {
+	border-radius: 100px;
+	width: 40px;
+	height: 30px;
+	padding: 5px;
+	background-color: #029FAE;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
