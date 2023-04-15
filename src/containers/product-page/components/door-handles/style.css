@@ -1,0 +1,16 @@
+.door-handles-content-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.door-handle-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.door-handle-photo {
+	max-width: 284px;
+	border: 1px solid #eeee;
+	margin-bottom: 20px;
+}

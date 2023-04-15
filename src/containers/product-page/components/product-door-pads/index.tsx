@@ -14,8 +14,9 @@ export const ProductDoorPads = ({
       <div className="product-door-pads-wrapper">
         <h2 className="product-door-pads-title">Виберіть зовнішній колір (термостійка плівка):</h2>
         <div className="product-door-pads-content-wrapper">
-          {ProductDoorOutsidePods.map(pod => (
+          {ProductDoorOutsidePods.map((pod, i) => (
             <ProductDoorPad
+              key={i}
               activeIndoorPad={activeIndoorPad}
               setActiveIndoorPad={setActiveIndoorPad}
               activeOutsidePad={activeOutsidePad}
@@ -29,8 +30,9 @@ export const ProductDoorPads = ({
       <div className="product-door-pads-wrapper">
         <h2 className="product-door-pads-title">Виберіть внутрішній колір:</h2>
         <div className="product-door-pads-content-wrapper">
-          {ProductDoorInsidePods.map(pod => (
+          {ProductDoorInsidePods.map((pod, i) => (
             <ProductDoorPad
+              key={i}
               activeIndoorPad={activeIndoorPad}
               setActiveIndoorPad={setActiveIndoorPad}
               activeOutsidePad={activeOutsidePad}

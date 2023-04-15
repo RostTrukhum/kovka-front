@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { productSpecificationTabs } from '../../constants';
+import { DoorHandles } from '../door-handles';
 import { ProductDoorConstruction } from '../product-door-construction';
 import { ProductDoorLocks } from '../product-door-locks';
 import { ProductDoorPads } from '../product-door-pads';

@@ -24,6 +24,26 @@ import DybRystikal from '../../../assets/images/dub_rustikal.jpg';
 import DybSonoma from '../../../assets/images/dub_sonoma.jpg';
 import KarpatskaTree from '../../../assets/images/karpatska_yalyna.jpg';
 import TukoveDerevo from '../../../assets/images/tykove_derevo.jpg';
+import Class252RlC from '../../../assets/images/class_252_rl_c.jpg';
+import Kale252R from '../../../assets/images/Kale_252R.jpg';
+import Gardian2112T from '../../../assets/images/zamok_gardian_21_12_t.jpg';
+import Gardian2512T from '../../../assets/images/zamok_gardian_25_12_t.jpg';
+import Motura52771 from '../../../assets/images/MOTTURA_52_771.jpg';
+import Motura54797 from '../../../assets/images/MOTTURA_54_797.jpg';
+import Kale257L from '../../../assets/images/kale_257_l.jpg';
+import Gardian1001 from '../../../assets/images/zamok_gardian_10_01.jpg';
+import Gardian5001 from '../../../assets/images/zamok_gardian_50_01.jpg';
+import Class3B88D from '../../../assets/images/class_3b8_8d.jpg';
+import Apecs2600CR from '../../../assets/images/APECS_2600CR.jpg';
+import { IProductDoorLockProps } from '../components/product-door-lock/types';
+import KedrR10045AlAbBronze from '../../../assets/images/dvernaja-ruchka-kedr-r10-045-al-ab-bronza.jpg';
+import KerdR10045AlSnCpSatin from '../../../assets/images/kedr-r10045ALSNCP_satin.jpg';
+import KedrR10023AlAbBronze from '../../../assets/images/kedr_R10023ALAB_bronze.jpg';
+import KedrR10023AlSnCp from '../../../assets/images/kedr_R10023AL_SN_CP_satin.jpg';
+import KedrR10026AlAbBronze from '../../../assets/images/dvernaja-ruchka-kedr-r10-026-al-ab-bronza.jpg';
+import KedrR10026AlSnCp from '../../../assets/images/dvernaja-ruchka-kedr-r10-026-al-sn-cp-satin-hrom.jpg';
+import ApecsH0880AAbBronze from '../../../assets/images/apecs_h_0880_a_ad_bronze.jpg';
+import ApecsH0880AlSnSatin from '../../../assets/images/apecs_h_0880_al_sn_cp_satin.jpg';
 
 export const productSpecificationTabs = [
   {
@@ -477,5 +497,165 @@ export const ProductDoorInsidePods = [
   {
     title: 'Тикове дерево',
     image: TukoveDerevo,
+  },
+];
+
+export const DoorLocks: IProductDoorLockProps[] = [
+  {
+    title: 'Замок основний та допоміжний (економ клас)',
+    locks: [
+      {
+        img: Apecs2600CR,
+        name: 'Apecs 2600 CR',
+        typeLock: 'Основний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '3',
+        classOfSecurity: '2',
+        reverseBar: 'Присутня',
+      },
+      {
+        img: Class3B88D,
+        name: 'Class ЗВ8-8D',
+        typeLock: 'Допоміжний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '3',
+        classOfSecurity: '3',
+        reverseBar: 'Присутня',
+      },
+    ],
+  },
+  {
+    title: 'Замки основні (стандарт та престиж клас)',
+    locks: [
+      {
+        img: Class252RlC,
+        name: 'CLASS 252 RL-С',
+        typeLock: 'Основний',
+        typeMechanism: 'Сувальдний',
+        countOfScroll: '3',
+        coutOfBolts: '3',
+        classOfSecurity: '4',
+        reverseBar: 'Присутня',
+      },
+      {
+        img: Kale252R,
+        name: 'Kale 252R',
+        typeLock: 'Основний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '3',
+        classOfSecurity: '4',
+        reverseBar: 'Присутня',
+      },
+      {
+        img: Gardian2112T,
+        name: 'Гардіан 21.12 Т',
+        typeLock: 'Основний',
+        typeMechanism: 'Сувальдний',
+        countOfScroll: '4',
+        reverseBar: 'Відсутня',
+        countOfCombinations: 'більше 2 млрд',
+      },
+      {
+        img: Gardian2512T,
+        name: 'Гардіан 25.12 Т',
+        typeLock: 'Комбінований',
+        typeMechanism: 'Сувальдний',
+        countOfScroll: '4',
+        reverseBar: 'Відсутня',
+        countOfCombinations: 'більше 2 млрд',
+      },
+      {
+        img: Motura52771,
+        name: 'Mottura® 52.771',
+        typeLock: 'Основний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '4',
+        reverseBar: 'Відсутня',
+      },
+      {
+        img: Motura54797,
+        name: 'Mottura® 54.797',
+        typeLock: 'Основний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '5',
+        reverseBar: 'Відсутня',
+      },
+    ],
+  },
+  {
+    title: 'Замки допоміжні (стандарт та престиж клас)',
+    locks: [
+      {
+        img: Kale257L,
+        name: 'Kale 257L',
+        typeLock: 'Допоміжний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '3',
+        classOfSecurity: '4',
+        reverseBar: 'Присутня',
+      },
+      {
+        img: Gardian1001,
+        name: 'Гардіан 10.01',
+        typeLock: 'Допоміжний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '3',
+        classOfSecurity: '4',
+        reverseBar: 'Відсутня',
+      },
+      {
+        img: Gardian5001,
+        name: 'Гардіан 50.01',
+        typeLock: 'Допоміжний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '3',
+        classOfSecurity: '4',
+        reverseBar: 'Відсутня',
+      },
+      {
+        img: Class3B88D,
+        name: 'Class ЗВ8-8D',
+        typeLock: 'Допоміжний',
+        typeMechanism: 'Сувальдний',
+        coutOfBolts: '3',
+        classOfSecurity: '3',
+        reverseBar: 'Присутня',
+      },
+    ],
+  },
+];
+
+export const DoorHandlesData = [
+  {
+    name: 'KEDR R10.045 AL AB бронза',
+    image: KedrR10045AlAbBronze,
+  },
+  {
+    name: 'KEDR R10.045 AL SN/CP сатин',
+    image: KerdR10045AlSnCpSatin,
+  },
+  {
+    name: 'KEDR R10.023 AL AB бронза',
+    image: KedrR10023AlAbBronze,
+  },
+  {
+    name: 'KEDR R10.023 AL SN/CP сатин',
+    image: KedrR10023AlSnCp,
+  },
+  {
+    name: 'KEDR R10.026 AL AB бронза',
+    image: KedrR10026AlAbBronze,
+  },
+  {
+    name: 'KEDR R10.026 AL SN/CP сатин',
+    image: KedrR10026AlSnCp,
+  },
+  {
+    name: 'APECS H-0880-A-AB бронза',
+    image: ApecsH0880AAbBronze,
+  },
+  {
+    name: 'APECS H-0880-AL SN/CP сатин',
+    image: ApecsH0880AlSnSatin,
   },
 ];
