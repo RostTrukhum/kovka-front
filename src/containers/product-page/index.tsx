@@ -26,6 +26,8 @@ export const ProductPage = () => {
   const [width, setWidth] = useState(product?.width || 1000);
   const [height, setHeight] = useState(product?.height || 1000);
   const [isBuyProductModalVisible, setIsBuyProductModalVisible] = useState(false);
+  const [activeIndoorPad, setActiveIndoorPad] = useState('');
+  const [activeOutsidePad, setActiveOutsidePad] = useState('');
 
   const handleOpenProductBuyModal = () => {
     setIsBuyProductModalVisible(true);
@@ -172,7 +174,12 @@ export const ProductPage = () => {
           </>
         )}
       </div>
-      <ProductSpecificationTabs />
+      <ProductSpecificationTabs
+        activeIndoorPad={activeIndoorPad}
+        setActiveIndoorPad={setActiveIndoorPad}
+        activeOutsidePad={activeOutsidePad}
+        setActiveOutsidePad={setActiveOutsidePad}
+      />
 
       <Footer />
       <CallBackModal

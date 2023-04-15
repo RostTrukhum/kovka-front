@@ -1,0 +1,71 @@
+.product-door-lock-main-wrapper {
+	flex: 1;
+}
+
+.product-door-lock-list {
+	display: flex;
+	justify-content: space-between;
+	gap: 60px;
+}
+
+.product-door-lock-title {
+	font-family: 'Inter';
+    font-size: 17px;
+}
+.product-door-lock-name {
+	font-family: 'Inter';
+    font-size: 17px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.product-door-lock-image {
+	width: 30%;
+	margin-right: 15px;
+	object-fit: cover;
+}
+
+
+.product-door-lock-content-wrapper {
+	display: flex;
+	width: 47%;
+}
+
+@media (max-width: 915px) {
+	.product-door-lock-list {
+		flex-direction: column;
+	}
+
+	.product-door-lock-image {
+		width: 25%;
+		object-fit: cover;
+	}
+
+	.product-door-lock-content-wrapper {
+		width: 100%;
+	}
+}
+
+.product-door-lock-subcontent-wrapper {
+	flex: 1;
+	padding-right: 10px;
+}
+
+.product-door-lock-content-list {
+	flex: 1;
+	margin-top: 10px
+}
+
+.product-door-lock-content-list-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	width: 100%;
+	border-radius: 10px;
+	min-width: 175px;
+}
+
+.product-door-lock-content-list-item:nth-child(2n) {
+	background-color: #eeee;
+}

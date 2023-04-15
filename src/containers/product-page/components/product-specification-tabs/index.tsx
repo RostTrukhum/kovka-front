@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import { productSpecificationTabs } from '../../constants';
 import { ProductDoorConstruction } from '../product-door-construction';
+import { ProductDoorLocks } from '../product-door-locks';
 import { ProductDoorPads } from '../product-door-pads';
 import './style.css';
+import { IProductSpecificationTabsProps } from './types';
 
-export const ProductSpecificationTabs = () => {
+export const ProductSpecificationTabs = ({
+  activeIndoorPad,
+  setActiveIndoorPad,
+  activeOutsidePad,
+  setActiveOutsidePad,
+}: IProductSpecificationTabsProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const productSpecificationComponentsTabs = [
@@ -12,7 +19,17 @@ export const ProductSpecificationTabs = () => {
       component: <ProductDoorConstruction />,
     },
     {
-      component: <ProductDoorPads />,
+      component: (
+        <ProductDoorPads
+          activeIndoorPad={activeIndoorPad}
+          setActiveIndoorPad={setActiveIndoorPad}
+          activeOutsidePad={activeOutsidePad}
+          setActiveOutsidePad={setActiveOutsidePad}
+        />
+      ),
+    },
+    {
+      component: <ProductDoorLocks />,
     },
   ];
 
