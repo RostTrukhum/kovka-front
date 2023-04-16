@@ -1,0 +1,35 @@
+.delivery-label-wrapper {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 1px solid #e7e7e7;
+	border-bottom: 1px solid #e7e7e7;
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.delivery-label-text {
+	max-width: 280px;
+	font-family: 'Inter';
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.delivery-label-generall-text {
+	color: #029FAE
+}
+
+.delivery-label-company-name {
+	padding-left: 5px;
+    padding-right: 5px;
+	background-color: #029FAE;
+	color: #ffff;
+	border-radius: 5px;
+}
+
+@media (max-width: 410px) {
+	.delivery-label-text {
+		font-size: 11px;
+	}
+}

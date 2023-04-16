@@ -12,6 +12,7 @@ import { addToCart, createCart } from '../../services/cart-service/cart.service'
 import { PRODUCT_TYPES } from '../../types';
 import { calculateForegroundPrice } from '../../utils';
 import { CartContext } from '../cart/context';
+import { DeliveryLabel } from './components/delivery-label';
 import { ProductCounter } from './components/product-counter';
 import { ProductSpecificationTabs } from './components/product-specification-tabs';
 import './style.css';
@@ -141,6 +142,7 @@ export const ProductPage = () => {
                 value={product?.description}
                 className="product-page-description"
               />
+              <DeliveryLabel />
               <SizeInputs
                 setHeight={handleChangeHeight}
                 setWidth={handleChangeWidth}
