@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { productSpecificationTabs } from '../../constants';
-import { DoorHandles } from '../door-handles';
+import { ReactComponent as EmptyRightArrowIcon } from '../../../../assets/icons/empty-right-arrow.svg';
 import { ProductDoorConstruction } from '../product-door-construction';
 import { ProductDoorLocks } from '../product-door-locks';
 import { ProductDoorPads } from '../product-door-pads';
@@ -14,6 +14,19 @@ export const ProductSpecificationTabs = ({
   setActiveOutsidePad,
 }: IProductSpecificationTabsProps) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileActiveTabs, setMobileActiveTabs] = useState<Number[]>([]);
+
+  const handleIsMobile = () => {
+    window.innerWidth > 600 && isMobile && setIsMobile(false);
+    window.innerWidth <= 600 && !isMobile && setIsMobile(true);
+  };
+
+  window.addEventListener('resize', handleIsMobile);
+
+  useEffect(() => {
+    handleIsMobile();
+  }, []);
 
   const productSpecificationComponentsTabs = [
     {
@@ -35,7 +48,18 @@ export const ProductSpecificationTabs = ({
   ];
 
   const handleActiveTab = (activeTabIndex: number) => () => {
-    setActiveTab(activeTabIndex);
+    if (!isMobile) {
+      setMobileActiveTabs([activeTabIndex]);
+      return setActiveTab(activeTabIndex);
+    }
+
+    const isActiveMobileTab = mobileActiveTabs.find(tab => tab === activeTabIndex);
+
+    if (isMobile && typeof isActiveMobileTab === 'number') {
+      return setMobileActiveTabs(mobileActiveTabs.filter(tab => tab !== activeTabIndex));
+    }
+
+    return setMobileActiveTabs([...mobileActiveTabs, activeTabIndex]);
   };
 
   return (
@@ -45,18 +69,34 @@ export const ProductSpecificationTabs = ({
           return (
             <div key={i}>
               <div
-                className={`product-tab ${i === activeTab && 'product-tab-active'}`}
+                className={`product-specification-tab ${
+                  (isMobile ? mobileActiveTabs.some(tab => tab === i) : i === activeTab) &&
+                  'product-specification-tab-active'
+                }`}
                 onClick={handleActiveTab(i)}
               >
                 <span
-                  className={`product-tab-text ${i === activeTab && 'product-tab-text-active'}`}
+                  className={`product-specification-tab-text ${
+                    (isMobile ? mobileActiveTabs.some(tab => tab === i) : i === activeTab) &&
+                    'product-specification-tab-text-active'
+                  }`}
                 >
                   {tab.title}
                 </span>
+                {isMobile && (
+                  <EmptyRightArrowIcon
+                    className={`categories-modal-category-list-item-arrow ${
+                      mobileActiveTabs.some(tab => tab === i) &&
+                      'categories-modal-category-list-item-arrow-opened'
+                    }`}
+                    width={10}
+                    height={10}
+                  />
+                )}
               </div>
-              {i === activeTab && (
+              {(isMobile ? mobileActiveTabs.some(tab => tab === i) : i === activeTab) && (
                 <div className="product-page-small-tab-content">
-                  {productSpecificationComponentsTabs[activeTab].component}
+                  {productSpecificationComponentsTabs[i].component}
                 </div>
               )}
             </div>
