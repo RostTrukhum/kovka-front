@@ -1,5 +1,3 @@
-import { IProduct } from '../admin-panel-service/types';
-
 export interface IGetCartVariables {
   cartId: string;
 }
@@ -16,6 +14,9 @@ export interface ICartProduct {
     width: number;
     height: number;
   };
+  markUpInProcents: number;
+  class?: string;
+  openingType?: string;
   count: number;
   width: number;
   height: number;
@@ -35,6 +36,9 @@ export interface ICreateCartVariables {
   productCount?: number;
   productWidth: number;
   productHeight: number;
+  doorClass: string;
+  doorOpeningType: string;
+  markUpInProcents: number;
 }
 
 export interface ICreateCartResponce {
@@ -50,6 +54,9 @@ export interface IAddToCartVariables {
   productId: string;
   productWidth: number;
   productHeight: number;
+  doorClass: string;
+  doorOpeningType: string;
+  markUpInProcents: number;
 }
 
 export interface IDeleteProductCartVariables {

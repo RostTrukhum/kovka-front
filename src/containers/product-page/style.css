@@ -5,6 +5,33 @@
     flex-direction: column;
 }
 
+.product-page-type-of-doors-wrapper {
+	display: flex;
+	gap: 30px;
+	width: 100%;
+	margin-top: 20px;
+	flex-wrap: wrap;
+}
+
+.product-page-door-type {
+	width: 45%;
+	padding: 10px;
+	font-family: 'Roboto';
+	font-size: 16px;
+	font-weight: 500;
+	min-width: 200px;
+	border: 1px solid #EEF0F4;
+	border-radius: 5px;
+}
+
+.product-door-left-opening-photo {
+	transform: scaleX(-1);
+}
+
+.product-page-door-type:focus {
+	outline: none;
+}
+
 .product-paga-content-wrapper {
 	display: flex;
 	justify-content: center;
@@ -45,6 +72,10 @@
 
 	.product-page-description {
 		min-height: 0px;
+	}
+
+	.product-page-door-type {
+		width: 100%;
 	}
 }
 

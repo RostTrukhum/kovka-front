@@ -17,12 +17,15 @@ export const Cart = () => {
   let cartPrice = 0;
 
   cart.products.forEach(product => {
-    const productPrice =
+    const productPrice = Math.ceil(
       calculateForegroundPrice({
         price: product?.product?.price,
         height: product?.height,
         width: product?.width,
-      }) * product.count;
+      }) *
+        product.count *
+        product.markUpInProcents,
+    );
 
     const updatedPrice =
       (product?.height !== product?.product?.height ||
@@ -70,6 +73,9 @@ export const Cart = () => {
                   cartWidth={product?.width}
                   productHeight={product?.product?.height}
                   productWidth={product?.product?.width}
+                  doorClass={product?.class!}
+                  openingType={product?.openingType!}
+                  markUpInProcents={product?.markUpInProcents}
                 />
               ))}
               <CallBackModal

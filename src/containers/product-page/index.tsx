@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import { CallBackModal } from '../../components/call-back-modal';
@@ -16,6 +16,7 @@ import { DeliveryLabel } from './components/delivery-label';
 import { ProductCounter } from './components/product-counter';
 import { ProductSpecificationTabs } from './components/product-specification-tabs';
 import './style.css';
+import { DOOR_CLASSES, DOOR_OPENING_TYPES } from './types';
 
 export const ProductPage = () => {
   const [product, setProduct] = useState<IProduct>();
@@ -29,6 +30,8 @@ export const ProductPage = () => {
   const [isBuyProductModalVisible, setIsBuyProductModalVisible] = useState(false);
   const [activeIndoorPad, setActiveIndoorPad] = useState('');
   const [activeOutsidePad, setActiveOutsidePad] = useState('');
+  const [doorClass, setDoorClass] = useState(DOOR_CLASSES.ECONOMY);
+  const [doorOpeningType, setDoorOpeningType] = useState(DOOR_OPENING_TYPES.RIGHT);
 
   const handleOpenProductBuyModal = () => {
     setIsBuyProductModalVisible(true);
@@ -48,6 +51,18 @@ export const ProductPage = () => {
     setProductCount(prev => prev - 1);
   };
 
+  const doorMarkUpPriceByType = useMemo(() => {
+    if (doorClass === DOOR_CLASSES.STANDART) {
+      return 1.1;
+    }
+
+    if (doorClass === DOOR_CLASSES.PRESTIGE) {
+      return 1.2;
+    }
+
+    return 1;
+  }, [doorClass]);
+
   const handleAddToCart = async () => {
     if (!productId) {
       return;
@@ -61,6 +76,9 @@ export const ProductPage = () => {
         productCount,
         productHeight: height,
         productWidth: width,
+        doorClass,
+        doorOpeningType,
+        markUpInProcents: doorMarkUpPriceByType,
       });
       cart && setCart(cart);
       setIsLoadingCart(false);
@@ -76,6 +94,9 @@ export const ProductPage = () => {
       productCount,
       productWidth: width,
       productHeight: height,
+      doorClass,
+      doorOpeningType,
+      markUpInProcents: doorMarkUpPriceByType,
     });
     newCart && setCart(newCart);
     setIsLoadingCart(false);
@@ -98,8 +119,19 @@ export const ProductPage = () => {
     isAvalible && setHeight(Number(e.target.value));
   };
 
-  const productPrice =
-    calculateForegroundPrice({ price: product?.price!, height, width }) * productCount;
+  const handleChangeClassDoor = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setDoorClass(e.target.value as DOOR_CLASSES);
+  };
+
+  const handleChangeDoorOpeningType = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setDoorOpeningType(e.target.value as DOOR_OPENING_TYPES);
+  };
+
+  const productPrice = Math.ceil(
+    calculateForegroundPrice({ price: product?.price!, height, width }) *
+      productCount *
+      doorMarkUpPriceByType,
+  );
 
   const isOutSizedDoor =
     (width !== product?.width || height !== product?.height) &&
@@ -132,10 +164,35 @@ export const ProductPage = () => {
         {Boolean(product && !isLoading) && (
           <>
             <div className="product-page-photo-wrapper">
-              <img className="product-page-photo" src={product?.img}></img>
+              <img
+                className={`product-page-photo ${
+                  doorOpeningType === DOOR_OPENING_TYPES.LEFT && 'product-door-left-opening-photo'
+                }`}
+                src={product?.img}
+              ></img>
             </div>
             <div className="product-page-content-description">
               <h1 className="product-page-title">{product?.title}</h1>
+              <div className="product-page-type-of-doors-wrapper">
+                <select
+                  onChange={handleChangeDoorOpeningType}
+                  value={doorOpeningType}
+                  className="product-page-door-type"
+                >
+                  <option value={DOOR_OPENING_TYPES.RIGHT}>Відкривання вправо</option>
+                  <option value={DOOR_OPENING_TYPES.LEFT}>Відкривання вліво</option>
+                </select>
+                <select
+                  onChange={handleChangeClassDoor}
+                  value={doorClass}
+                  className="product-page-door-type"
+                >
+                  <option value={DOOR_CLASSES.ECONOMY}>Економ клас</option>
+                  <option value={DOOR_CLASSES.STANDART}>Стандарт клас</option>
+                  <option value={DOOR_CLASSES.PRESTIGE}>Престиж клас</option>
+                </select>
+              </div>
+
               <textarea
                 style={{ height: descriptionHeight }}
                 disabled={true}
@@ -192,9 +249,12 @@ export const ProductPage = () => {
               ...product!,
               price: isOutSizedDoor ? product?.price! * 0.99 : product?.price!,
             },
+            markUpInProcents: doorMarkUpPriceByType,
             count: productCount,
             width,
             height,
+            class: doorClass,
+            openingType: doorOpeningType,
             _id: product?._id!,
           },
         ]}

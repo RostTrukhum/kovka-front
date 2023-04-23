@@ -12,4 +12,7 @@ export interface ICartProductProps {
   cartWidth: number;
   productHeight: number;
   productWidth: number;
+  doorClass: string;
+  openingType: string;
+  markUpInProcents: number;
 }

@@ -47,12 +47,9 @@
 	font-weight: 600;
 	color: black;
 	margin-bottom: 10px;
-	width: 40vw;
-	text-overflow: ellipsis; 
-	overflow: hidden; 
-	white-space: nowrap;
 	cursor: pointer;
 	transition: all 0.5s;
+	margin-top: 0px;
 }
 
 .cart-products-measures {

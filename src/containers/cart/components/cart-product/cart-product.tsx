@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
 import { ReactComponent as TrashIcon } from '../../../../assets/icons/trash.svg';
 import {
   deleteProductCart,
@@ -9,6 +8,7 @@ import {
 import { PRODUCT_TYPES } from '../../../../types';
 import { calculateForegroundPrice } from '../../../../utils';
 import { ProductCounter } from '../../../product-page/components/product-counter';
+import { DOOR_OPENING_TYPES } from '../../../product-page/types';
 import { SCREENS } from '../../../router/constants';
 import { CartContext } from '../../context';
 import './style.css';
@@ -28,6 +28,9 @@ export const CartProduct = ({
   cartWidth,
   productHeight,
   productWidth,
+  doorClass,
+  openingType,
+  markUpInProcents,
 }: ICartProductProps) => {
   const [countOfProduct, setCountOfProduct] = useState(count);
   const [isChangingCartProductCount, setIsChanginCartProductCount] = useState(false);
@@ -77,9 +80,11 @@ export const CartProduct = ({
     navigate(`${SCREENS.PRODUCT_PAGE}/${productId}`);
   };
 
-  const productPrice =
+  const productPrice = Math.ceil(
     calculateForegroundPrice({ price: price, height: cartHeight, width: cartWidth }) *
-    countOfProduct;
+      countOfProduct *
+      markUpInProcents,
+  );
 
   const updatedPrice =
     (productHeight !== cartHeight || productWidth !== cartWidth) && type === PRODUCT_TYPES.DOORS
@@ -88,7 +93,13 @@ export const CartProduct = ({
 
   return (
     <div className={`cart-product-wrapper ${isProductLoading && 'cart-product-loading-wrapper'}`}>
-      <img onClick={handleNavigateToProduct} className="cart-product-img" src={img} />
+      <img
+        onClick={handleNavigateToProduct}
+        className={`cart-product-img ${
+          openingType === DOOR_OPENING_TYPES.LEFT && 'product-door-left-opening-photo'
+        } `}
+        src={img}
+      />
       <div className="cart-product-text-content-wrapper">
         <div className="cart-product-title-wrapper">
           <div className="cart-product-title-subwrapper">
@@ -97,6 +108,8 @@ export const CartProduct = ({
             </h2>
             <span className="cart-products-measures">Ширина: {cartWidth} мм</span>
             <span className="cart-products-measures">Висота: {cartHeight} мм</span>
+            <span className="cart-products-measures">Клас: {doorClass}</span>
+            <span className="cart-products-measures">Відкривання: {openingType}</span>
           </div>
           <TrashIcon
             onClick={handleDeleteProduct}
