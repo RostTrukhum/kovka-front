@@ -6,6 +6,7 @@ import { ProductDoorLocks } from '../product-door-locks';
 import { ProductDoorPads } from '../product-door-pads';
 import './style.css';
 import { IProductSpecificationTabsProps } from './types';
+import { ProductDoorGuarantee } from '../product-door-guarantee';
 
 export const ProductSpecificationTabs = ({
   activeIndoorPad,
@@ -46,6 +47,9 @@ export const ProductSpecificationTabs = ({
     },
     {
       component: <ProductDoorLocks />,
+    },
+    {
+      component: <ProductDoorGuarantee />,
     },
   ];
 
