@@ -1,5 +1,6 @@
 .product-door-pad-wrapper {
-	max-width: 150px;
+	width: 150px;
+	height: 177px;
 	display: flex;
 	flex-direction: column;
 	gap: 5px;

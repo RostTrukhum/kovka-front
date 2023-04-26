@@ -17,6 +17,7 @@ import { ProductCounter } from './components/product-counter';
 import { ProductSpecificationTabs } from './components/product-specification-tabs';
 import './style.css';
 import { DOOR_CLASSES, DOOR_OPENING_TYPES } from './types';
+import { Store } from 'react-notifications-component';
 
 export const ProductPage = () => {
   const [product, setProduct] = useState<IProduct>();
@@ -63,6 +64,22 @@ export const ProductPage = () => {
     return 1;
   }, [doorClass]);
 
+  const showAddToCardMessage = () => {
+    Store.addNotification({
+      title: 'Дякуємо!',
+      message: 'Ваш товар доданий у кошик',
+      type: 'success',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
+      dismiss: {
+        duration: 2000,
+        onScreen: true,
+      },
+    });
+  };
+
   const handleAddToCart = async () => {
     if (!productId) {
       return;
@@ -81,6 +98,7 @@ export const ProductPage = () => {
         markUpInProcents: doorMarkUpPriceByType,
       });
       cart && setCart(cart);
+      showAddToCardMessage();
       setIsLoadingCart(false);
       setIsAddingToCart(false);
       return;
@@ -99,6 +117,7 @@ export const ProductPage = () => {
       markUpInProcents: doorMarkUpPriceByType,
     });
     newCart && setCart(newCart);
+    showAddToCardMessage();
     setIsLoadingCart(false);
     setIsAddingToCart(false);
   };

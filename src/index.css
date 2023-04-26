@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.rnc__notification-content{
+  background-color: #029FAE !important;
+}
+
+.rnc__notification-item--success .rnc__notification-timer {
+  background-color: #39d8e6 !important
+}
+
+.rnc__notification-item--success {
+  border-left: 8px solid #39d8e6 !important
+}
