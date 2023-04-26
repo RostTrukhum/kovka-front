@@ -44,6 +44,12 @@ import KedrR10026AlAbBronze from '../../../assets/images/dvernaja-ruchka-kedr-r1
 import KedrR10026AlSnCp from '../../../assets/images/dvernaja-ruchka-kedr-r10-026-al-sn-cp-satin-hrom.jpg';
 import ApecsH0880AAbBronze from '../../../assets/images/apecs_h_0880_a_ad_bronze.jpg';
 import ApecsH0880AlSnSatin from '../../../assets/images/apecs_h_0880_al_sn_cp_satin.jpg';
+import PolymerDubDark from '../../../assets/images/polymer_dub_dark.jpg';
+import PolymerDubGold from '../../../assets/images/polymer_dub_gold.jpg';
+import PolymerGrafit from '../../../assets/images/polymer_grafit.jpg';
+import PolymerVenge from '../../../assets/images/polymer_venge.jpg';
+import PolymerWhiteTreePatynaGold from '../../../assets/images/polymer_white_tree_patyna_gold.jpg';
+import PolymerWhiteTreePatynaSilver from '../../../assets/images/polymer_white_tree_patyna_silver.jpg';
 
 export const productSpecificationTabs = [
   {
@@ -387,6 +393,33 @@ export const ProductDoorConstructions = [
         },
       ],
     ],
+  },
+];
+
+export const ProductDoorOutsidePolymerPods = [
+  {
+    image: PolymerDubDark,
+    title: 'Дуб темний',
+  },
+  {
+    image: PolymerDubGold,
+    title: 'Дуб золотий',
+  },
+  {
+    image: PolymerGrafit,
+    title: 'Графіт',
+  },
+  {
+    image: PolymerVenge,
+    title: 'Венге',
+  },
+  {
+    image: PolymerWhiteTreePatynaGold,
+    title: 'Біле дерево із золотою патиною',
+  },
+  {
+    image: PolymerWhiteTreePatynaSilver,
+    title: 'Біле дерево із срібною патиною',
   },
 ];
 

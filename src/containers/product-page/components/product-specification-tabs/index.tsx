@@ -12,6 +12,7 @@ export const ProductSpecificationTabs = ({
   setActiveIndoorPad,
   activeOutsidePad,
   setActiveOutsidePad,
+  isPolymer,
 }: IProductSpecificationTabsProps) => {
   const [activeTab, setActiveTab] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -35,6 +36,7 @@ export const ProductSpecificationTabs = ({
     {
       component: (
         <ProductDoorPads
+          isPolymer={isPolymer}
           activeIndoorPad={activeIndoorPad}
           setActiveIndoorPad={setActiveIndoorPad}
           activeOutsidePad={activeOutsidePad}

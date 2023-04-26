@@ -8,6 +8,7 @@
 	border-radius: 5px;
 	padding-bottom: 5px;
 	position: relative;
+	justify-content: space-evenly;
 }
 
 .product-door-pad-text {

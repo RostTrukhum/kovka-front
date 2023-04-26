@@ -5,4 +5,5 @@ export interface IProductSpecificationTabsProps {
   setActiveIndoorPad: React.Dispatch<React.SetStateAction<string>>;
   activeOutsidePad: string;
   setActiveOutsidePad: React.Dispatch<React.SetStateAction<string>>;
+  isPolymer?: boolean;
 }

@@ -1,4 +1,8 @@
-import { ProductDoorInsidePods, ProductDoorOutsidePods } from '../../constants';
+import {
+  ProductDoorInsidePods,
+  ProductDoorOutsidePods,
+  ProductDoorOutsidePolymerPods,
+} from '../../constants';
 import { ProductDoorPad } from '../product-door-pad';
 import { IProductSpecificationTabsProps } from '../product-specification-tabs/types';
 import './style.css';
@@ -8,13 +12,20 @@ export const ProductDoorPads = ({
   setActiveIndoorPad,
   activeOutsidePad,
   setActiveOutsidePad,
+  isPolymer,
 }: IProductSpecificationTabsProps) => {
+  const outsidePoods = isPolymer ? ProductDoorOutsidePolymerPods : ProductDoorOutsidePods;
+
   return (
     <div className="product-door-pads-main-wrapper">
       <div className="product-door-pads-wrapper">
-        <h2 className="product-door-pads-title">Виберіть зовнішній колір (термостійка плівка):</h2>
+        <h2 className="product-door-pads-title">
+          {isPolymer
+            ? 'Виберіть зовнішній колір (полімерні накладки):'
+            : 'Виберіть зовнішній колір (термостійка плівка):'}
+        </h2>
         <div className="product-door-pads-content-wrapper">
-          {ProductDoorOutsidePods.map((pod, i) => (
+          {outsidePoods.map((pod, i) => (
             <ProductDoorPad
               key={i}
               activeIndoorPad={activeIndoorPad}

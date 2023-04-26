@@ -42,6 +42,8 @@ export const ProductPage = () => {
     setIsBuyProductModalVisible(false);
   };
 
+  const isPolymerDoor = product?.description.split(' ')?.[0] === 'Технічні';
+
   const { productId } = useParams<{ productId: string }>();
 
   const handlePlus = () => {
@@ -257,6 +259,7 @@ export const ProductPage = () => {
         setActiveIndoorPad={setActiveIndoorPad}
         activeOutsidePad={activeOutsidePad}
         setActiveOutsidePad={setActiveOutsidePad}
+        isPolymer={isPolymerDoor}
       />
 
       <Footer />
