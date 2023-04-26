@@ -1,0 +1,24 @@
+.call-messanger-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.call-messanger-row-wrapper {
+	flex-direction: row;
+}
+
+.call-messanger {
+	width: 60px;
+    height: 60px;
+	border-radius: 10px;
+}
+
+@media (max-width: 380px) {
+	.call-messanger-wrapper {
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		margin-top: 20px;
+	}
+}

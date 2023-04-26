@@ -10,6 +10,7 @@ import { CartContext } from '../../containers/cart/context';
 import InputMask from 'react-input-mask';
 
 import './style.css';
+import { Messangers } from '../messangers';
 
 export const CallBackModal = ({
   isVisible,
@@ -92,6 +93,7 @@ export const CallBackModal = ({
               />
             </>
           )}
+          {!products && !isSendedCallBack && <Messangers isRow />}
         </div>
       </div>
     </Modal>
