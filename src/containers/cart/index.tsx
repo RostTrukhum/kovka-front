@@ -24,7 +24,7 @@ export const Cart = () => {
         width: product?.width,
       }) *
         product.count *
-        product.markUpInProcents,
+        (product.markUpInProcents || 1),
     );
 
     const updatedPrice =

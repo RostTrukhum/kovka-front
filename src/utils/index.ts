@@ -5,8 +5,8 @@ export const calculateForegroundPrice = ({
   height,
   price,
 }: ICalculateForegroundVariables) => {
-  const widthInMeters = width / 1000;
-  const heightInMeters = height / 1000;
+  const widthInMeters = width ? width / 1000 : 1;
+  const heightInMeters = height ? height / 1000 : 1;
 
   return Math.ceil(widthInMeters * heightInMeters * price);
 };

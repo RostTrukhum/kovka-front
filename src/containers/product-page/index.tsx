@@ -9,7 +9,7 @@ import { SizeInputs } from '../../components/size-inputs';
 import { getProductById } from '../../services/admin-panel-service/admin-panel.service';
 import { IProduct } from '../../services/admin-panel-service/types';
 import { addToCart, createCart } from '../../services/cart-service/cart.service';
-import { PRODUCT_TYPES } from '../../types';
+import { PRODUCT_SUBTYPES, PRODUCT_TYPES } from '../../types';
 import { calculateForegroundPrice } from '../../utils';
 import { CartContext } from '../cart/context';
 import { DeliveryLabel } from './components/delivery-label';
@@ -87,18 +87,21 @@ export const ProductPage = () => {
       return;
     }
 
+    const cartProduct = {
+      productId,
+      productCount,
+      ...(product?.subtype !== PRODUCT_SUBTYPES.BENCHES && {
+        productHeight: height,
+        productWidth: width,
+      }),
+      ...(product?.type === PRODUCT_TYPES.DOORS && { doorClass, doorOpeningType }),
+      ...(product?.type === PRODUCT_TYPES.DOORS && { markUpInProcents: doorMarkUpPriceByType }),
+    };
+
     if (!localStorage.getItem('cart_id')) {
       setIsAddingToCart(true);
       setIsLoadingCart(true);
-      const cart = await createCart({
-        productId,
-        productCount,
-        productHeight: height,
-        productWidth: width,
-        doorClass,
-        doorOpeningType,
-        markUpInProcents: doorMarkUpPriceByType,
-      });
+      const cart = await createCart(cartProduct);
       cart && setCart(cart);
       showAddToCardMessage();
       setIsLoadingCart(false);
@@ -110,13 +113,7 @@ export const ProductPage = () => {
     setIsLoadingCart(true);
     const newCart = await addToCart({
       cartId: cart._id,
-      productId,
-      productCount,
-      productWidth: width,
-      productHeight: height,
-      doorClass,
-      doorOpeningType,
-      markUpInProcents: doorMarkUpPriceByType,
+      ...cartProduct,
     });
     newCart && setCart(newCart);
     showAddToCardMessage();
@@ -194,25 +191,27 @@ export const ProductPage = () => {
             </div>
             <div className="product-page-content-description">
               <h1 className="product-page-title">{product?.title}</h1>
-              <div className="product-page-type-of-doors-wrapper">
-                <select
-                  onChange={handleChangeDoorOpeningType}
-                  value={doorOpeningType}
-                  className="product-page-door-type"
-                >
-                  <option value={DOOR_OPENING_TYPES.RIGHT}>Відкривання вправо</option>
-                  <option value={DOOR_OPENING_TYPES.LEFT}>Відкривання вліво</option>
-                </select>
-                <select
-                  onChange={handleChangeClassDoor}
-                  value={doorClass}
-                  className="product-page-door-type"
-                >
-                  <option value={DOOR_CLASSES.ECONOMY}>Економ клас</option>
-                  <option value={DOOR_CLASSES.STANDART}>Стандарт клас</option>
-                  <option value={DOOR_CLASSES.PRESTIGE}>Престиж клас</option>
-                </select>
-              </div>
+              {product?.type === PRODUCT_TYPES.DOORS && (
+                <div className="product-page-type-of-doors-wrapper">
+                  <select
+                    onChange={handleChangeDoorOpeningType}
+                    value={doorOpeningType}
+                    className="product-page-door-type"
+                  >
+                    <option value={DOOR_OPENING_TYPES.RIGHT}>Відкривання вправо</option>
+                    <option value={DOOR_OPENING_TYPES.LEFT}>Відкривання вліво</option>
+                  </select>
+                  <select
+                    onChange={handleChangeClassDoor}
+                    value={doorClass}
+                    className="product-page-door-type"
+                  >
+                    <option value={DOOR_CLASSES.ECONOMY}>Економ клас</option>
+                    <option value={DOOR_CLASSES.STANDART}>Стандарт клас</option>
+                    <option value={DOOR_CLASSES.PRESTIGE}>Престиж клас</option>
+                  </select>
+                </div>
+              )}
 
               <textarea
                 style={{ height: descriptionHeight }}
@@ -220,13 +219,15 @@ export const ProductPage = () => {
                 value={product?.description}
                 className="product-page-description"
               />
-              <DeliveryLabel />
-              <SizeInputs
-                setHeight={handleChangeHeight}
-                setWidth={handleChangeWidth}
-                width={width}
-                height={height}
-              />
+              {product?.type === PRODUCT_TYPES.DOORS && <DeliveryLabel />}
+              {product?.subtype !== PRODUCT_SUBTYPES.BENCHES && (
+                <SizeInputs
+                  setHeight={handleChangeHeight}
+                  setWidth={handleChangeWidth}
+                  width={width}
+                  height={height}
+                />
+              )}
               <ProductCounter
                 handleMinus={handleMinus}
                 handlePlus={handlePlus}
@@ -235,6 +236,9 @@ export const ProductPage = () => {
               <span className="product-page-price">
                 {updatedPrice}
                 грн
+                {product?.type === PRODUCT_TYPES.FORGED_PRODUCTS &&
+                  product?.subtype !== PRODUCT_SUBTYPES.BENCHES &&
+                  '/м²'}
               </span>
               <div className="product-buy-buttons-wrapper">
                 <MainButton

@@ -1,7 +1,7 @@
-import { Search } from '../search';
+// import { Search } from '../search';
 import { ReactComponent as QuoteIcon } from '../../assets/icons/quote.svg';
-import { ReactComponent as HeartIcon } from '../../assets/icons/heart.svg';
-import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg';
+// import { ReactComponent as HeartIcon } from '../../assets/icons/heart.svg';
+// import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 import { SCREENS } from '../../containers/router/constants';
@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../containers/cart/context';
 import { ClipLoader } from 'react-spinners';
 import Logo from '../../assets/images/logo_transparent.png';
+import { NavPhoneNumbers } from '../nav-phone-numbers';
 
 export const Navbar = () => {
   const { isLoading: isCartLoading, cart } = useContext(CartContext);
@@ -31,12 +32,7 @@ export const Navbar = () => {
           <div className="nav-logo-title">Gospodar</div>
         </div>
         <div className="nav-phone-number-wrapper">
-          <a className="nav-phone-number" href="tel:+380931107980">
-            +38(093)110-79-80
-          </a>
-          <a className="nav-phone-number" href="tel:+380673705288">
-            +38(067)370-52-88
-          </a>
+          <NavPhoneNumbers />
         </div>
         <div className="search-buttons-wrapper">
           <div onClick={handleCartClick} className="search-button unique-search-button">

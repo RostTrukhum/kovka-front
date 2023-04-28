@@ -14,6 +14,10 @@
 	margin-bottom: 14px;
 }
 
+.main-foreground-product-card-img {
+	object-fit: revert;
+}
+
 .main-product-card-data-wrapper {
 	display: flex;
 	justify-content: space-between;

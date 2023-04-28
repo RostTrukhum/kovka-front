@@ -34,11 +34,11 @@ export interface IDeleteCartVariables {
 export interface ICreateCartVariables {
   productId: string;
   productCount?: number;
-  productWidth: number;
-  productHeight: number;
-  doorClass: string;
-  doorOpeningType: string;
-  markUpInProcents: number;
+  productWidth?: number;
+  productHeight?: number;
+  doorClass?: string;
+  doorOpeningType?: string;
+  markUpInProcents?: number;
 }
 
 export interface ICreateCartResponce {
@@ -52,11 +52,11 @@ export interface IAddToCartVariables {
   cartId: string;
   productCount?: number;
   productId: string;
-  productWidth: number;
-  productHeight: number;
-  doorClass: string;
-  doorOpeningType: string;
-  markUpInProcents: number;
+  productWidth?: number;
+  productHeight?: number;
+  doorClass?: string;
+  doorOpeningType?: string;
+  markUpInProcents?: number;
 }
 
 export interface IDeleteProductCartVariables {

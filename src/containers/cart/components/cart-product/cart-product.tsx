@@ -83,7 +83,7 @@ export const CartProduct = ({
   const productPrice = Math.ceil(
     calculateForegroundPrice({ price: price, height: cartHeight, width: cartWidth }) *
       countOfProduct *
-      markUpInProcents,
+      (markUpInProcents || 1),
   );
 
   const updatedPrice =
@@ -106,10 +106,12 @@ export const CartProduct = ({
             <h2 onClick={handleNavigateToProduct} className="cart-product-title">
               {title}
             </h2>
-            <span className="cart-products-measures">Ширина: {cartWidth} мм</span>
-            <span className="cart-products-measures">Висота: {cartHeight} мм</span>
-            <span className="cart-products-measures">Клас: {doorClass}</span>
-            <span className="cart-products-measures">Відкривання: {openingType}</span>
+            {cartWidth && <span className="cart-products-measures">Ширина: {cartWidth} мм</span>}
+            {cartHeight && <span className="cart-products-measures">Висота: {cartHeight} мм</span>}
+            {doorClass && <span className="cart-products-measures">Клас: {doorClass}</span>}
+            {openingType && (
+              <span className="cart-products-measures">Відкривання: {openingType}</span>
+            )}
           </div>
           <TrashIcon
             onClick={handleDeleteProduct}
