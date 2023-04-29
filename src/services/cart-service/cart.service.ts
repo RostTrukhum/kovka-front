@@ -139,8 +139,8 @@ export const updateCartProductCount = async ({
         cartId,
         cartProductId,
         productCount,
-        productHeight,
-        productWidth,
+        ...(productHeight && { productHeight }),
+        ...(productWidth && { productWidth }),
       },
     );
 

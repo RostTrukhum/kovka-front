@@ -185,6 +185,8 @@ export const ProductPage = () => {
               <img
                 className={`product-page-photo ${
                   doorOpeningType === DOOR_OPENING_TYPES.LEFT && 'product-door-left-opening-photo'
+                } ${
+                  product?.type === PRODUCT_TYPES.FORGED_PRODUCTS && 'product-foreground-page-photo'
                 }`}
                 src={product?.img}
               ></img>
@@ -275,12 +277,13 @@ export const ProductPage = () => {
               ...product!,
               price: isOutSizedDoor ? product?.price! * 0.99 : product?.price!,
             },
-            markUpInProcents: doorMarkUpPriceByType,
             count: productCount,
-            width,
-            height,
-            class: doorClass,
-            openingType: doorOpeningType,
+            ...(product?.subtype !== PRODUCT_SUBTYPES.BENCHES && { width, height }),
+            ...(product?.type === PRODUCT_TYPES.DOORS && {
+              class: doorClass,
+              markUpInProcents: doorMarkUpPriceByType,
+              openingType: doorOpeningType,
+            }),
             _id: product?._id!,
           },
         ]}

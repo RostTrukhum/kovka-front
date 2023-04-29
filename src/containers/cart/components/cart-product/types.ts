@@ -8,11 +8,11 @@ export interface ICartProductProps {
   productId: string;
   count: number;
   cartId: string;
-  cartHeight: number;
-  cartWidth: number;
-  productHeight: number;
-  productWidth: number;
-  doorClass: string;
-  openingType: string;
-  markUpInProcents: number;
+  cartHeight?: number;
+  cartWidth?: number;
+  productHeight?: number;
+  productWidth?: number;
+  doorClass?: string;
+  openingType?: string;
+  markUpInProcents?: number;
 }

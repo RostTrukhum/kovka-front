@@ -14,12 +14,12 @@ export interface ICartProduct {
     width: number;
     height: number;
   };
-  markUpInProcents: number;
+  markUpInProcents?: number;
   class?: string;
   openingType?: string;
   count: number;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   _id: string;
 }
 
@@ -68,6 +68,6 @@ export interface IUpdateCartProductCountVariables {
   cartId: string;
   cartProductId: string;
   productCount: number;
-  productWidth: number;
-  productHeight: number;
+  productWidth?: number;
+  productHeight?: number;
 }
