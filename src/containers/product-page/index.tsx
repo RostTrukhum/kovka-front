@@ -260,13 +260,15 @@ export const ProductPage = () => {
           </>
         )}
       </div>
-      <ProductSpecificationTabs
-        activeIndoorPad={activeIndoorPad}
-        setActiveIndoorPad={setActiveIndoorPad}
-        activeOutsidePad={activeOutsidePad}
-        setActiveOutsidePad={setActiveOutsidePad}
-        isPolymer={isPolymerDoor}
-      />
+      {product?.type === PRODUCT_TYPES.DOORS && (
+        <ProductSpecificationTabs
+          activeIndoorPad={activeIndoorPad}
+          setActiveIndoorPad={setActiveIndoorPad}
+          activeOutsidePad={activeOutsidePad}
+          setActiveOutsidePad={setActiveOutsidePad}
+          isPolymer={isPolymerDoor}
+        />
+      )}
 
       <Footer />
       <CallBackModal

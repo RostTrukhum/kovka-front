@@ -63,6 +63,10 @@ export const CallBackModal = ({
     }
   }, [isSendedCallBack]);
 
+  const isPhoneNumberFull =
+    typeof Number(phoneNumber.split('')[18]) === 'number' &&
+    !isNaN(Number(phoneNumber.split('')[18]));
+
   return (
     <Modal isVisible={isVisible} onClose={customClose}>
       <div className="call-back-modal-wrapper">
@@ -85,7 +89,7 @@ export const CallBackModal = ({
                 mask={'+38 (999) 999 99 99'}
               />
               <MainButton
-                disabled={!phoneNumber || isLoading}
+                disabled={!phoneNumber || !isPhoneNumberFull || isLoading}
                 isLoading={isLoading}
                 customWrapperClass="call-back-modal-button"
                 text={products ? 'Оформити замовлення' : 'Зворотній дзвінок'}

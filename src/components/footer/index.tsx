@@ -12,8 +12,8 @@ export const Footer = () => {
         <div className="footer-call-number-wrapper">
           <span className="footer-call-number-text">
             Телефон:{' '}
-            <a className="footer-call-number-link" href="tel:+380931107980">
-              +38(093)110-79-80
+            <a className="footer-call-number-link" href="tel:+380931107969">
+              +38(093)110-79-69
             </a>
           </span>
           <span className="footer-call-number-text">
@@ -25,8 +25,8 @@ export const Footer = () => {
         </div>
         <span className="footer-call-number-text ">
           E-mail:{' '}
-          <a className="footer-call-number-link" href="mailto:rostislavtruhim012@gmail.com">
-            rostislavtruhim012@gmail.com
+          <a className="footer-call-number-link" href="mailto:gospodar.kovka@gmail.com">
+            gospodar.kovka@gmail.com
           </a>
         </span>
       </div>
