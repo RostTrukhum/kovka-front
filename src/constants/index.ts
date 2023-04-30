@@ -1,6 +1,5 @@
-// export const BACKEND_URL = 'http://localhost:3000';
-export const BACKEND_URL = 'https://gospodar-kovka.onrender.com';
-export const UPLOAD_PHOTO_BACKEND = 'https://api.imgbb.com/1/upload';
-export const UPLOAD_PHOTO_BACKEND_KEY = '522594ff544734f4098d95500e05ee54';
+export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+export const UPLOAD_PHOTO_BACKEND = process.env.REACT_APP_UPLOAD_PHOTO_BACKEND;
+export const UPLOAD_PHOTO_BACKEND_KEY = process.env.REACT_APP_UPLOAD_PHOTO_BACKEND_KEY;
+export const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD;
 export const FETCH_PRODUCT_LIMIT = 6;
-export const ADMIN_PASSWORD = 'Rost_333';

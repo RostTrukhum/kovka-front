@@ -173,7 +173,7 @@ export const ProductCard = ({
     }
 
     const formdata = new FormData();
-    formdata.append('key', UPLOAD_PHOTO_BACKEND_KEY);
+    formdata.append('key', UPLOAD_PHOTO_BACKEND_KEY!);
     formdata.append('image', file);
     const uploadedPhoto = await uploadProductImage({ image: formdata });
 

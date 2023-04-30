@@ -93,7 +93,7 @@ export const updateProduct = async ({
 
 export const uploadProductImage = async ({ image }: UploadProductImage) => {
   try {
-    const uploadedPhoto = await axios.post(UPLOAD_PHOTO_BACKEND, image);
+    const uploadedPhoto = await axios.post(UPLOAD_PHOTO_BACKEND!, image);
 
     return uploadedPhoto?.data?.data?.image?.url;
   } catch (e) {
