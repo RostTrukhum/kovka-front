@@ -114,11 +114,11 @@ export const CartProduct = ({
             {openingType && (
               <span className="cart-products-measures">Відкривання: {openingType}</span>
             )}
-            {indoorPad && (
-              <span className="cart-products-measures">Внутрішня накладка: {indoorPad}</span>
-            )}
             {outsidePad && (
               <span className="cart-products-measures">Зовнішня накладка: {outsidePad}</span>
+            )}
+            {indoorPad && (
+              <span className="cart-products-measures">Внутрішня накладка: {indoorPad}</span>
             )}
           </div>
           <TrashIcon

@@ -72,7 +72,7 @@ export const ProductPage = () => {
       message: 'Ваш товар доданий у кошик',
       type: 'success',
       insert: 'top',
-      container: 'top-right',
+      container: 'top-left',
       animationIn: ['animate__animated', 'animate__fadeIn'],
       animationOut: ['animate__animated', 'animate__fadeOut'],
       dismiss: {
