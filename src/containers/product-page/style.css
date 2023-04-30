@@ -138,3 +138,10 @@
 .product-page-buy-button {
 	background: green;
 }
+
+.product-page-pods-label {
+	line-height: 20px;
+    font-weight: 600;
+    font-family: "Roboto";
+    color: #029FAE;
+}

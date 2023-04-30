@@ -15,4 +15,6 @@ export interface ICartProductProps {
   doorClass?: string;
   openingType?: string;
   markUpInProcents?: number;
+  indoorPad?: string;
+  outsidePad?: string;
 }

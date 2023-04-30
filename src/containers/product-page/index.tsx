@@ -96,6 +96,8 @@ export const ProductPage = () => {
       }),
       ...(product?.type === PRODUCT_TYPES.DOORS && { doorClass, doorOpeningType }),
       ...(product?.type === PRODUCT_TYPES.DOORS && { markUpInProcents: doorMarkUpPriceByType }),
+      ...(activeOutsidePad && { outsidePad: activeOutsidePad }),
+      ...(activeIndoorPad && { indoorPad: activeIndoorPad }),
     };
 
     if (!localStorage.getItem('cart_id')) {
@@ -256,6 +258,12 @@ export const ProductPage = () => {
                   isLoading={isAddingToCart}
                 />
               </div>
+              {product?.type === PRODUCT_TYPES.DOORS && (
+                <p className="product-page-pods-label">
+                  Перед покупкою, Ви можете обрати колір накладок дверей у розділі "Кольори
+                  накладок", або обговороти це в подальшому з нашим консультантом
+                </p>
+              )}
             </div>
           </>
         )}
@@ -279,6 +287,8 @@ export const ProductPage = () => {
               ...product!,
               price: isOutSizedDoor ? product?.price! * 0.99 : product?.price!,
             },
+            ...(activeIndoorPad && { indoorPad: activeIndoorPad }),
+            ...(activeOutsidePad && { outsidePad: activeOutsidePad }),
             count: productCount,
             ...(product?.subtype !== PRODUCT_SUBTYPES.BENCHES && { width, height }),
             ...(product?.type === PRODUCT_TYPES.DOORS && {

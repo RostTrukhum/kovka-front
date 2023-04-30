@@ -14,6 +14,8 @@ export interface ICartProduct {
     width: number;
     height: number;
   };
+  indoorPad?: string;
+  outsidePad?: string;
   markUpInProcents?: number;
   class?: string;
   openingType?: string;
@@ -39,6 +41,8 @@ export interface ICreateCartVariables {
   doorClass?: string;
   doorOpeningType?: string;
   markUpInProcents?: number;
+  indoorPad?: string;
+  outsidePad?: string;
 }
 
 export interface ICreateCartResponce {
@@ -57,6 +61,8 @@ export interface IAddToCartVariables {
   doorClass?: string;
   doorOpeningType?: string;
   markUpInProcents?: number;
+  indoorPad?: string;
+  outsidePad?: string;
 }
 
 export interface IDeleteProductCartVariables {

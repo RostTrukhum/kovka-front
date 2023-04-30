@@ -31,6 +31,8 @@ export const CartProduct = ({
   doorClass,
   openingType,
   markUpInProcents,
+  indoorPad,
+  outsidePad,
 }: ICartProductProps) => {
   const [countOfProduct, setCountOfProduct] = useState(count);
   const [isChangingCartProductCount, setIsChanginCartProductCount] = useState(false);
@@ -111,6 +113,12 @@ export const CartProduct = ({
             {doorClass && <span className="cart-products-measures">Клас: {doorClass}</span>}
             {openingType && (
               <span className="cart-products-measures">Відкривання: {openingType}</span>
+            )}
+            {indoorPad && (
+              <span className="cart-products-measures">Внутрішня накладка: {indoorPad}</span>
+            )}
+            {outsidePad && (
+              <span className="cart-products-measures">Зовнішня накладка: {outsidePad}</span>
             )}
           </div>
           <TrashIcon

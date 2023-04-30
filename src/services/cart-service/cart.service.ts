@@ -37,6 +37,8 @@ export const createCart = async ({
   doorClass,
   doorOpeningType,
   markUpInProcents,
+  indoorPad,
+  outsidePad,
 }: ICreateCartVariables) => {
   try {
     const cart = await axios.post<ICreateCartVariables, ICreateCartResponce>(
@@ -49,6 +51,8 @@ export const createCart = async ({
         class: doorClass,
         openingType: doorOpeningType,
         markUpInProcents,
+        indoorPad,
+        outsidePad,
       },
     );
 
@@ -83,6 +87,8 @@ export const addToCart = async ({
   doorClass,
   doorOpeningType,
   markUpInProcents,
+  indoorPad,
+  outsidePad,
 }: IAddToCartVariables) => {
   try {
     const updatedCart = await axios.post<IAddToCartVariables, ICreateCartResponce>(
@@ -96,6 +102,8 @@ export const addToCart = async ({
         class: doorClass,
         openingType: doorOpeningType,
         markUpInProcents,
+        indoorPad,
+        outsidePad,
       },
     );
 

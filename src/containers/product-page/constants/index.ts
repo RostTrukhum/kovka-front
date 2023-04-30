@@ -401,29 +401,50 @@ export const ProductDoorOutsidePolymerPods = [
     image: PolymerDubDark,
     title: 'Дуб темний',
   },
-  {
-    image: PolymerDubGold,
-    title: 'Дуб золотий',
-  },
+
   {
     image: PolymerGrafit,
     title: 'Графіт',
+  },
+  {
+    image: PolymerDubGold,
+    title: 'Дуб золотий',
   },
   {
     image: PolymerVenge,
     title: 'Венге',
   },
   {
-    image: PolymerWhiteTreePatynaGold,
-    title: 'Біле дерево із золотою патиною',
-  },
-  {
     image: PolymerWhiteTreePatynaSilver,
     title: 'Біле дерево із срібною патиною',
+  },
+  {
+    image: PolymerWhiteTreePatynaGold,
+    title: 'Біле дерево із золотою патиною',
   },
 ];
 
 export const ProductDoorOutsidePods = [
+  {
+    image: CherryMorena,
+    title: 'Вишня морена',
+  },
+  {
+    image: DybWhite,
+    title: 'Дуб білений',
+  },
+  {
+    image: DybBronze,
+    title: 'Дуб бронзовий',
+  },
+  {
+    image: BitternessDark,
+    title: 'Горіх темний',
+  },
+  {
+    image: DybVolcano,
+    title: 'Дуб вулкан',
+  },
   {
     image: Antracyt,
     title: 'Антрацит',
@@ -437,36 +458,16 @@ export const ProductDoorOutsidePods = [
     title: 'Венге південне',
   },
   {
-    image: CherryMorena,
-    title: 'Вишня морена',
-  },
-  {
-    image: BitternessDark,
-    title: 'Горіх темний',
-  },
-  {
-    image: DybWhite,
-    title: 'Дуб білений',
-  },
-  {
-    image: DybBronze,
-    title: 'Дуб бронзовий',
-  },
-  {
-    image: DybVolcano,
-    title: 'Дуб вулкан',
-  },
-  {
-    image: DybSchampano,
-    title: 'Дуб шампань',
-  },
-  {
     image: DybGold,
     title: 'Дуб золотй',
   },
   {
     image: Mahon,
     title: 'Махонь',
+  },
+  {
+    image: DybSchampano,
+    title: 'Дуб шампань',
   },
 ];
 
@@ -479,18 +480,7 @@ export const ProductDoorInsidePods = [
     title: 'Білий сатин',
     image: WhiteSatin,
   },
-  {
-    title: 'Біле дерево',
-    image: WhiteTree,
-  },
-  {
-    title: 'Венге світле',
-    image: VengeBright,
-  },
-  {
-    title: 'Венге темний',
-    image: VengeDark,
-  },
+
   {
     title: 'Вільха',
     image: Vilha,
@@ -502,6 +492,26 @@ export const ProductDoorInsidePods = [
   {
     title: 'Графіт матовий',
     image: GrafitMat,
+  },
+  {
+    title: 'Біле дерево',
+    image: WhiteTree,
+  },
+  {
+    title: 'Дуб сонома',
+    image: DybSonoma,
+  },
+  {
+    title: 'Карпатська ялина',
+    image: KarpatskaTree,
+  },
+  {
+    title: 'Венге світле',
+    image: VengeBright,
+  },
+  {
+    title: 'Венге темний',
+    image: VengeDark,
   },
   {
     title: 'Дуб антик',
@@ -518,14 +528,6 @@ export const ProductDoorInsidePods = [
   {
     title: 'Дуб рустікаль',
     image: DybRystikal,
-  },
-  {
-    title: 'Дуб сонома',
-    image: DybSonoma,
-  },
-  {
-    title: 'Карпатська ялина',
-    image: KarpatskaTree,
   },
   {
     title: 'Тикове дерево',

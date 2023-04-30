@@ -76,6 +76,8 @@ export const Cart = () => {
                   doorClass={product?.class!}
                   openingType={product?.openingType!}
                   markUpInProcents={product?.markUpInProcents}
+                  outsidePad={product?.outsidePad}
+                  indoorPad={product?.indoorPad}
                 />
               ))}
               <CallBackModal
