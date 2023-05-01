@@ -217,12 +217,14 @@ export const ProductPage = () => {
                 </div>
               )}
 
-              <textarea
-                style={{ height: descriptionHeight }}
-                disabled={true}
-                value={product?.description}
-                className="product-page-description"
-              />
+              {product?.description !== ' ' && (
+                <textarea
+                  style={{ height: descriptionHeight }}
+                  disabled={true}
+                  value={product?.description}
+                  className="product-page-description"
+                />
+              )}
               {product?.type === PRODUCT_TYPES.DOORS && <DeliveryLabel />}
               {product?.subtype !== PRODUCT_SUBTYPES.BENCHES && (
                 <SizeInputs
