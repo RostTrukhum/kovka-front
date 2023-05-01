@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kovka-front/static/css/main.cabfe79c.css",
-    "main.js": "/kovka-front/static/js/main.c1687ea9.js",
+    "main.js": "/kovka-front/static/js/main.41bdcccc.js",
     "static/media/class_3b8_8d.jpg": "/kovka-front/static/media/class_3b8_8d.c506c021ace55bcfe2a3.jpg",
     "static/media/APECS_2600CR.jpg": "/kovka-front/static/media/APECS_2600CR.f7e6e1e2e62fb1ea8c8b.jpg",
     "static/media/apecs_h_0880_a_ad_bronze.jpg": "/kovka-front/static/media/apecs_h_0880_a_ad_bronze.4ae9287712d7646de710.jpg",
@@ -69,10 +69,10 @@
     "static/media/cross.svg": "/kovka-front/static/media/cross.90e54e388f35190992904a36fe7d907e.svg",
     "static/media/menu.svg": "/kovka-front/static/media/menu.2fa5e208f7add01c5df962d75aa099dc.svg",
     "main.cabfe79c.css.map": "/kovka-front/static/css/main.cabfe79c.css.map",
-    "main.c1687ea9.js.map": "/kovka-front/static/js/main.c1687ea9.js.map"
+    "main.41bdcccc.js.map": "/kovka-front/static/js/main.41bdcccc.js.map"
   },
   "entrypoints": [
     "static/css/main.cabfe79c.css",
-    "static/js/main.c1687ea9.js"
+    "static/js/main.41bdcccc.js"
   ]
 }
