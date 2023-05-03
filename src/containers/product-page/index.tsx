@@ -18,6 +18,7 @@ import { ProductSpecificationTabs } from './components/product-specification-tab
 import './style.css';
 import { DOOR_CLASSES, DOOR_OPENING_TYPES } from './types';
 import { Store } from 'react-notifications-component';
+import { DOOR_CLASSES_DESCRIPTION } from './constants';
 
 export const ProductPage = () => {
   const [product, setProduct] = useState<IProduct>();
@@ -34,6 +35,8 @@ export const ProductPage = () => {
   const [doorClass, setDoorClass] = useState(DOOR_CLASSES.ECONOMY);
   const [doorOpeningType, setDoorOpeningType] = useState(DOOR_OPENING_TYPES.RIGHT);
 
+  const isPolymerDoor = product?.description.split(' ')?.[0] === 'Технічні';
+
   const handleOpenProductBuyModal = () => {
     setIsBuyProductModalVisible(true);
   };
@@ -41,8 +44,6 @@ export const ProductPage = () => {
   const handleCloseProductBuyModal = () => {
     setIsBuyProductModalVisible(false);
   };
-
-  const isPolymerDoor = product?.description.split(' ')?.[0] === 'Технічні';
 
   const { productId } = useParams<{ productId: string }>();
 
@@ -55,16 +56,16 @@ export const ProductPage = () => {
   };
 
   const doorMarkUpPriceByType = useMemo(() => {
-    if (doorClass === DOOR_CLASSES.STANDART) {
+    if (doorClass === DOOR_CLASSES.STANDART && !isPolymerDoor) {
       return 1.1;
     }
 
     if (doorClass === DOOR_CLASSES.PRESTIGE) {
-      return 1.2;
+      return isPolymerDoor ? 1.1 : 1.2;
     }
 
     return 1;
-  }, [doorClass]);
+  }, [doorClass, isPolymerDoor]);
 
   const showAddToCardMessage = () => {
     Store.addNotification({
@@ -159,6 +160,12 @@ export const ProductPage = () => {
 
   const updatedPrice = isOutSizedDoor ? Math.ceil(productPrice * 0.99) : productPrice;
 
+  const doorDescription = useMemo(() => {
+    return DOOR_CLASSES_DESCRIPTION.find(
+      description => description.title.split(' ')[0] === doorClass.split(' ')[0],
+    );
+  }, [doorClass]);
+
   useEffect(() => {
     if (productId) {
       (async () => {
@@ -171,6 +178,12 @@ export const ProductPage = () => {
       })();
     }
   }, [productId]);
+
+  useEffect(() => {
+    if (isPolymerDoor) {
+      setDoorClass(DOOR_CLASSES.STANDART);
+    }
+  }, [isPolymerDoor]);
 
   useEffect(() => {
     setDescriptionHeight(document.querySelector('.product-page-description')?.scrollHeight!);
@@ -196,24 +209,32 @@ export const ProductPage = () => {
             <div className="product-page-content-description">
               <h1 className="product-page-title">{product?.title}</h1>
               {product?.type === PRODUCT_TYPES.DOORS && (
-                <div className="product-page-type-of-doors-wrapper">
-                  <select
-                    onChange={handleChangeDoorOpeningType}
-                    value={doorOpeningType}
-                    className="product-page-door-type"
-                  >
-                    <option value={DOOR_OPENING_TYPES.RIGHT}>Відкривання вправо</option>
-                    <option value={DOOR_OPENING_TYPES.LEFT}>Відкривання вліво</option>
-                  </select>
-                  <select
-                    onChange={handleChangeClassDoor}
-                    value={doorClass}
-                    className="product-page-door-type"
-                  >
-                    <option value={DOOR_CLASSES.ECONOMY}>Економ клас</option>
-                    <option value={DOOR_CLASSES.STANDART}>Стандарт клас</option>
-                    <option value={DOOR_CLASSES.PRESTIGE}>Престиж клас</option>
-                  </select>
+                <div className="product-page-type-of-doors-main-wrapper">
+                  <div className="product-page-type-of-doors-wrapper">
+                    <select
+                      onChange={handleChangeDoorOpeningType}
+                      value={doorOpeningType}
+                      className="product-page-door-type"
+                    >
+                      <option value={DOOR_OPENING_TYPES.RIGHT}>Відкривання вправо</option>
+                      <option value={DOOR_OPENING_TYPES.LEFT}>Відкривання вліво</option>
+                    </select>
+                    <select
+                      onChange={handleChangeClassDoor}
+                      value={doorClass}
+                      className="product-page-door-type"
+                    >
+                      {!isPolymerDoor && <option value={DOOR_CLASSES.ECONOMY}>Економ клас</option>}
+                      <option value={DOOR_CLASSES.STANDART}>Стандарт клас</option>
+                      <option value={DOOR_CLASSES.PRESTIGE}>Престиж клас</option>
+                    </select>
+                  </div>
+                  <p>
+                    <strong className="product-page-door-classes-description">
+                      {doorDescription?.title}
+                    </strong>
+                    {doorDescription?.description}
+                  </p>
                 </div>
               )}
 
@@ -280,7 +301,7 @@ export const ProductPage = () => {
         />
       )}
 
-      <Footer />
+      {!isLoading && <Footer />}
       <CallBackModal
         cartPrice={updatedPrice}
         products={[

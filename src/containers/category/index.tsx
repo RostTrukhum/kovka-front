@@ -97,7 +97,7 @@ export const Category = () => {
           />
         )}
       </div>
-      <Footer />
+      {!isLoading && <Footer />}
     </div>
   );
 };
