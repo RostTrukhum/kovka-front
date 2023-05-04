@@ -6,6 +6,22 @@
 	cursor: pointer;
 }
 
+.main-product-card-img-wrapper {
+	position: relative;
+}
+
+.main-product-card-poymer-label {
+	position: absolute;
+	background: #029FAE;
+    z-index: 1;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 9px;
+    border-radius: 2px;
+	bottom: 10px;
+	color: white;
+}
+
 .main-product-card-img {
 	width: 312px;
 	height: 312px;

@@ -20,7 +20,10 @@ export const MainProductCard = ({
   subtype,
   height,
   width,
+  description,
 }: IMainProductCardProps) => {
+  const isPolymerDoor = description.split(' ')?.[0] === 'Технічні';
+
   // const [isAddToCartLoading, setIsAddToCartLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -68,13 +71,17 @@ export const MainProductCard = ({
 
   return (
     <div onClick={handleClick} className="main-product-card-wrapper">
-      <img
-        className={`main-product-card-img ${
-          type === PRODUCT_TYPES.FORGED_PRODUCTS && 'main-foreground-product-card-img'
-        }`}
-        src={img}
-        alt={img}
-      />
+      <div className="main-product-card-img-wrapper">
+        <img
+          className={`main-product-card-img ${
+            type === PRODUCT_TYPES.FORGED_PRODUCTS && 'main-foreground-product-card-img'
+          }`}
+          src={img}
+          alt={img}
+        />
+        {isPolymerDoor && <div className="main-product-card-poymer-label">Полімерні накладки</div>}
+      </div>
+
       <div className="main-product-card-data-wrapper">
         <div className="main-product-card-info-wrapper">
           <span className="main-product-card-title">{title}</span>

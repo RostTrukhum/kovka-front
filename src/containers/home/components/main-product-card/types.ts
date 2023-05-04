@@ -7,4 +7,5 @@ export interface IMainProductCardProps {
   subtype: string;
   width: number;
   height: number;
+  description: string;
 }
