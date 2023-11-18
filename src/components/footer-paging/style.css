@@ -1,0 +1,27 @@
+.footer-paging-wrapper {
+	display: flex;
+	align-items: 'center';
+	gap: 5px;
+	margin-top: 20px;
+}
+
+.footer-paging-button {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	background-color: black;
+}
+
+.footer-paging-button-active {
+	background-color:#029FAE;
+}
+
+.footer-paging-button:hover {
+	background-color:#029FAE;
+	transition: all 0.1s;
+}

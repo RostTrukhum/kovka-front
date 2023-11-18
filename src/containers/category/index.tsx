@@ -2,23 +2,40 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import { Footer } from '../../components/footer';
-import { MainButton } from '../../components/main-button';
+import { FooterPaging } from '../../components/footer-paging';
+// import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { FETCH_PRODUCT_LIMIT } from '../../constants';
-import { getProducts } from '../../services/admin-panel-service/admin-panel.service';
+import { ProductsContext } from '../../context/products';
+import { useProducts } from '../../hooks/productsHook';
+// import { getProducts } from '../../services/admin-panel-service/admin-panel.service';
 import { IProduct } from '../../services/admin-panel-service/types';
 import { ProductTypesContext } from '../admin-panel/context';
 import { MainProductCard } from '../home/components/main-product-card';
 import './style.css';
 
 export const Category = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const { productTypes } = useContext(ProductTypesContext);
-  const { type, subtype } = useParams();
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const [totalCount, setTotalCount] = useState(0);
   const [skip, setSkip] = useState(0);
+  const { type, subtype } = useParams();
+
+  const { getProducts } = useProducts();
+  const handleGetProducts = () => {
+    return getProducts({
+      filter: {
+        type,
+        ...(subtype !== 'all' && { subtype }),
+        limit: FETCH_PRODUCT_LIMIT,
+        skip: skip,
+      },
+    });
+  };
+
+  const [products, setProducts] = useState<IProduct[]>(handleGetProducts().products);
+  // const [isLoading, setIsLoading] = useState(false);
+  const { productTypes } = useContext(ProductTypesContext);
+  // const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [totalCount, setTotalCount] = useState(0);
+  const { isLoading } = useContext(ProductsContext);
 
   const activeTitle =
     productTypes
@@ -27,35 +44,40 @@ export const Category = () => {
     productTypes.find(productType => productType.type === type)?.title;
 
   const fetchProducts = async () => {
-    setIsLoading(true);
-    const products = await getProducts({
-      filter: { type, ...(subtype !== 'all' && { subtype }), limit: FETCH_PRODUCT_LIMIT, skip: 0 },
-    });
-    setSkip(FETCH_PRODUCT_LIMIT);
-    products && setProducts(products.products);
-    typeof products?.totalCount === 'number' && setTotalCount(products?.totalCount);
-    setIsLoading(false);
+    // setIsLoading(true);
+    const products = handleGetProducts();
+
+    const productsCount = getProducts({
+      filter: { type, ...(subtype !== 'all' && { subtype }) },
+    }).products.length;
+
+    // setSkip(FETCH_PRODUCT_LIMIT);
+    setProducts(products.products);
+    setTotalCount(productsCount);
+    // setIsLoading(false);
   };
 
-  const handleLoadMore = async () => {
-    if (totalCount <= skip) {
-      return;
-    }
+  // const handleLoadMore = async () => {
+  //   if (totalCount <= skip) {
+  //     return;
+  //   }
 
-    setIsLoadingMore(true);
-    const newProducts = await getProducts({
-      filter: { type, ...(subtype !== 'all' && { subtype }), limit: FETCH_PRODUCT_LIMIT, skip },
-    });
-    products && newProducts && setProducts([...products, ...newProducts?.products]);
-    setSkip(skip + FETCH_PRODUCT_LIMIT);
-    typeof newProducts?.totalCount === 'number' && setTotalCount(newProducts?.totalCount);
-    setIsLoadingMore(false);
-  };
+  //   setIsLoadingMore(true);
+  //   const newProducts = await getProducts({
+  //     filter: { type, ...(subtype !== 'all' && { subtype }), limit: FETCH_PRODUCT_LIMIT, skip },
+  //   });
+  //   products && newProducts && setProducts([...products, ...newProducts?.products]);
+  //   setSkip(skip + FETCH_PRODUCT_LIMIT);
+  //   typeof newProducts?.totalCount === 'number' && setTotalCount(newProducts?.totalCount);
+  //   setIsLoadingMore(false);
+  // };
 
   useEffect(() => {
-    (async () => {
-      await fetchProducts();
-    })();
+    fetchProducts();
+  }, [type, subtype, isLoading, skip]);
+
+  useEffect(() => {
+    setSkip(0);
   }, [type, subtype]);
 
   return (
@@ -86,7 +108,8 @@ export const Category = () => {
             </div>
           )}
         </div>
-        {totalCount > skip && (
+        <FooterPaging setSkip={setSkip} productsCount={totalCount} skip={skip} />
+        {/* {totalCount > skip && (
           <MainButton
             onClick={handleLoadMore}
             customWrapperClass={`main-product-cards-load-more-button button ${
@@ -96,7 +119,7 @@ export const Category = () => {
             disabled={isLoadingMore}
             isLoading={isLoadingMore}
           />
-        )}
+        )} */}
       </div>
       {!isLoading && <Footer />}
     </div>

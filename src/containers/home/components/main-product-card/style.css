@@ -24,6 +24,7 @@
 
 .main-product-card-img {
 	width: 312px;
+	min-height: 312px;
 	height: 312px;
 	object-fit: cover;
 	border-radius: 6px;

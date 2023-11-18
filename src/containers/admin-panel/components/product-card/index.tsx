@@ -190,7 +190,7 @@ export const ProductCard = ({
   return (
     <div className="product-card-wrapper">
       <div>
-        <img className="product-card-img" src={productImage} alt={productImage} />
+        <img className="product-card-img lazyload" data-src={productImage} alt={productImage} />
       </div>
       <div className="product-card-input-wrapper">
         <span className="product-card-title">Назва:</span>

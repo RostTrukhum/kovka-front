@@ -1,10 +1,11 @@
+export interface IGetProductsFilter {
+  type?: string;
+  subtype?: string;
+  limit?: number;
+  skip?: number;
+}
 export interface IGetProductsVariables {
-  filter?: {
-    type?: string;
-    subtype?: string;
-    limit: number;
-    skip: number;
-  };
+  filter?: IGetProductsFilter;
 }
 
 export interface IGetProductByIdVariables {

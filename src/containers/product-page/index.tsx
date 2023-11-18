@@ -6,7 +6,8 @@ import { Footer } from '../../components/footer';
 import { MainButton } from '../../components/main-button';
 import { MainHeader } from '../../components/main-header';
 import { SizeInputs } from '../../components/size-inputs';
-import { getProductById } from '../../services/admin-panel-service/admin-panel.service';
+// import { getProductById } from '../../services/admin-panel-service/admin-panel.service';
+import { useProducts } from '../../hooks/productsHook';
 import { IProduct } from '../../services/admin-panel-service/types';
 import { addToCart, createCart } from '../../services/cart-service/cart.service';
 import { PRODUCT_SUBTYPES, PRODUCT_TYPES } from '../../types';
@@ -19,11 +20,14 @@ import './style.css';
 import { DOOR_CLASSES, DOOR_OPENING_TYPES } from './types';
 import { Store } from 'react-notifications-component';
 import { DOOR_CLASSES_DESCRIPTION } from './constants';
+import { ProductsContext } from '../../context/products';
 
 export const ProductPage = () => {
+  const { isLoading } = useContext(ProductsContext);
+  const { getProductById } = useProducts();
   const [product, setProduct] = useState<IProduct>();
   const [productCount, setProductCount] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { cart, setCart, setIsLoading: setIsLoadingCart } = useContext(CartContext);
   const [descriptionHeight, setDescriptionHeight] = useState(100);
@@ -169,15 +173,16 @@ export const ProductPage = () => {
   useEffect(() => {
     if (productId) {
       (async () => {
-        setIsLoading(true);
-        const product = await getProductById({ id: productId });
+        // setIsLoading(true);
+        // const product = await getProductById({ id: productId });
+        const product = getProductById({ id: productId });
         setProduct(product);
         setWidth(product?.width!);
         setHeight(product?.height!);
-        setIsLoading(false);
+        // setIsLoading(false);
       })();
     }
-  }, [productId]);
+  }, [productId, isLoading]);
 
   useEffect(() => {
     if (isPolymerDoor) {
@@ -301,7 +306,7 @@ export const ProductPage = () => {
         />
       )}
 
-      {!isLoading && <Footer />}
+      {!isLoading && product && <Footer />}
       <CallBackModal
         cartPrice={updatedPrice}
         products={[

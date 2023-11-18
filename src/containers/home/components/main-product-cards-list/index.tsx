@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FETCH_PRODUCT_LIMIT } from '../../../../constants';
-import { getProducts } from '../../../../services/admin-panel-service/admin-panel.service';
+// import { getProducts } from '../../../../services/admin-panel-service/admin-panel.service';
 import { IProduct } from '../../../../services/admin-panel-service/types';
 import { MainProductCard } from '../main-product-card';
 import { MainProductsTabs } from '../main-products-tabs';
@@ -8,57 +8,77 @@ import { PRODUCT_TABS } from '../main-products-tabs/types';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import './style.css';
-import { MainButton } from '../../../../components/main-button';
+// import { MainButton } from '../../../../components/main-button';
+import { useProducts } from '../../../../hooks/productsHook';
+import { ProductsContext } from '../../../../context/products';
+import { FooterPaging } from '../../../../components/footer-paging';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { SCREENS } from '../../../router/constants';
 
 export const MainProductCardList = () => {
-  const [activeTab, setActiveTab] = useState(PRODUCT_TABS.ALL);
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.state?.tab || PRODUCT_TABS.ALL);
+  const { getProducts } = useProducts();
   const [totalCount, setTotalCount] = useState(0);
   const [skip, setSkip] = useState(0);
 
-  const handleActiveProductType = (tab: PRODUCT_TABS) => () => {
-    setActiveTab(tab);
-  };
-
-  const fetchProducts = async () => {
-    setIsLoading(true);
-    const products = await getProducts({
-      filter:
-        activeTab !== PRODUCT_TABS.ALL
-          ? { type: activeTab, limit: FETCH_PRODUCT_LIMIT, skip: 0 }
-          : { limit: FETCH_PRODUCT_LIMIT, skip: 0 },
-    });
-    products && setProducts(products?.products);
-    setSkip(FETCH_PRODUCT_LIMIT);
-    typeof products?.totalCount === 'number' && setTotalCount(products?.totalCount);
-    setIsLoading(false);
-  };
-
-  const handleLoadMore = async () => {
-    if (totalCount <= skip) {
-      return;
-    }
-
-    setIsLoadingMore(true);
-    const newProducts = await getProducts({
+  const handleGetProducts = () => {
+    return getProducts({
       filter:
         activeTab !== PRODUCT_TABS.ALL
           ? { type: activeTab, limit: FETCH_PRODUCT_LIMIT, skip }
           : { limit: FETCH_PRODUCT_LIMIT, skip },
     });
-    products && newProducts && setProducts([...products, ...newProducts?.products]);
-    setSkip(skip + FETCH_PRODUCT_LIMIT);
-    typeof newProducts?.totalCount === 'number' && setTotalCount(newProducts?.totalCount);
-    setIsLoadingMore(false);
   };
 
+  const [products, setProducts] = useState<IProduct[]>(handleGetProducts().products);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const { isLoading } = useContext(ProductsContext);
+
+  const handleActiveProductType = (tab: PRODUCT_TABS) => () => {
+    setActiveTab(tab);
+    setSkip(0);
+    navigate(SCREENS.HOME, {
+      state: {
+        tab,
+      },
+    });
+  };
+
+  const fetchProducts = async () => {
+    const products = handleGetProducts();
+    products && setProducts(products?.products);
+    // setSkip(FETCH_PRODUCT_LIMIT);
+    // typeof products?.totalCount === 'number' && setTotalCount(products?.totalCount);
+  };
+
+  // const handleLoadMore = async () => {
+  //   if (totalCount <= skip) {
+  //     return;
+  //   }
+
+  //   setIsLoadingMore(true);
+  //   const newProducts = await getProducts({
+  //     filter:
+  //       activeTab !== PRODUCT_TABS.ALL
+  //         ? { type: activeTab, limit: FETCH_PRODUCT_LIMIT, skip }
+  //         : { limit: FETCH_PRODUCT_LIMIT, skip },
+  //   });
+  //   products && newProducts && setProducts([...products, ...newProducts?.products]);
+  //   setSkip(skip + FETCH_PRODUCT_LIMIT);
+  //   typeof newProducts?.totalCount === 'number' && setTotalCount(newProducts?.totalCount);
+  //   setIsLoadingMore(false);
+  // };
+
   useEffect(() => {
-    (async () => {
-      await fetchProducts();
-    })();
-  }, [activeTab]);
+    !isLoading && fetchProducts();
+    const productsCount = getProducts({
+      filter: activeTab !== PRODUCT_TABS.ALL ? { type: activeTab } : {},
+    }).products.length;
+    productsCount && setTotalCount(productsCount);
+  }, [activeTab, isLoading, skip]);
 
   return (
     <div className="main-product-cards-list-wrapper">
@@ -87,7 +107,13 @@ export const MainProductCardList = () => {
           </div>
         )}
       </div>
-      {totalCount > skip && (
+      <FooterPaging
+        setSkip={setSkip}
+        productsCount={totalCount}
+        skip={skip}
+        setActiveTab={setActiveTab}
+      />
+      {/* {totalCount > skip && (
         <MainButton
           onClick={handleLoadMore}
           customWrapperClass={`main-product-cards-load-more-button button ${
@@ -97,7 +123,7 @@ export const MainProductCardList = () => {
           disabled={isLoadingMore}
           isLoading={isLoadingMore}
         />
-      )}
+      )} */}
     </div>
   );
 };
