@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gospodar-kovka.com.ua/sitemap.xml
+Sitemap:https://kuznya-gospodar.com.ua/sitemap.xml
